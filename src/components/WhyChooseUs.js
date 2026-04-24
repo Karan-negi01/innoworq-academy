@@ -1,0 +1,189 @@
+"use client";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
+const features = [
+  {
+    icon: "⚡",
+    title: "Vibe Coding & Automation",
+    description: "Forget typing syntax. Learn to generate production-ready code natively using high-end AI agents. We focus on outcome, not boilerplate.",
+    color: "#4F46E5",
+    bg: "linear-gradient(135deg, rgba(79,70,229,0.08), rgba(79,70,229,0.02))",
+    span: "col-span-1 md:col-span-2", // Wide box
+  },
+  {
+    icon: "💼",
+    title: "Industry Ready",
+    description: "Skills taught by professionals, for professionals.",
+    color: "#7C3AED",
+    bg: "linear-gradient(135deg, rgba(124,58,237,0.08), rgba(124,58,237,0.02))",
+    span: "col-span-1", // Square box
+  },
+  {
+    icon: "📁",
+    title: "Live Command Portfolio",
+    description: "Don't just show certificates. Show your deployed agents working live.",
+    color: "#0a0a0a",
+    bg: "linear-gradient(135deg, rgba(10,10,10,0.05), rgba(10,10,10,0.01))",
+    span: "col-span-1", // Square box
+  },
+  {
+    icon: "🎯",
+    title: "Zero-Fluff Curriculum",
+    description: "20 hours of pure, dense, action-oriented learning. Every minute is spent on tools you'll actually use on the job tomorrow.",
+    color: "#10b981",
+    bg: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02))",
+    span: "col-span-1 md:col-span-2", // Wide box
+  },
+];
+
+function BentoCard({ feature, index }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        background: feature.bg,
+        borderRadius: "24px",
+        padding: "40px",
+        border: "1px solid rgba(0,0,0,0.04)",
+        boxShadow: "0 10px 40px rgba(0,0,0,0.02)",
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        minHeight: "260px"
+      }}
+      className={feature.span}
+      whileHover={{ y: -4, boxShadow: "0 20px 50px rgba(0,0,0,0.06)" }}
+    >
+      <div 
+        style={{
+          width: "48px",
+          height: "48px",
+          background: "white",
+          borderRadius: "14px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "20px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+          marginBottom: "32px",
+          border: "1px solid rgba(0,0,0,0.05)"
+        }}
+      >
+        {feature.icon}
+      </div>
+
+      <div>
+        <h3
+          style={{
+            fontSize: "22px",
+            fontWeight: 700,
+            fontFamily: "'Inter', sans-serif",
+            color: "#0a0a0a",
+            marginBottom: "12px",
+            letterSpacing: "-0.5px",
+            lineHeight: 1.2
+          }}
+        >
+          {feature.title}
+        </h3>
+        <p
+          style={{
+            fontSize: "15px",
+            color: "#475569",
+            lineHeight: 1.6,
+            fontWeight: 400,
+            maxWidth: "90%"
+          }}
+        >
+          {feature.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function WhyChooseUs() {
+  const titleRef = useRef(null);
+  const titleInView = useInView(titleRef, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      id="features"
+      style={{
+        padding: "120px 0",
+        background: "transparent",
+      }}
+    >
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+        {/* Section Header */}
+        <motion.div
+          ref={titleRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ textAlign: "center", marginBottom: "80px" }}
+        >
+          <h2
+            style={{
+              fontSize: "clamp(36px, 5vw, 56px)",
+              fontWeight: 800,
+              fontFamily: "'Inter', sans-serif",
+              color: "#0a0a0a",
+              letterSpacing: "-0.04em",
+              lineHeight: 1.1,
+              marginBottom: "24px",
+            }}
+          >
+            Built for the AI Era,
+            <br />
+            <span style={{ color: "#94a3b8", fontWeight: 400, fontStyle: "italic", fontFamily: "'Poppins', sans-serif" }}>
+              Not the Past.
+            </span>
+          </h2>
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#475569",
+              maxWidth: "520px",
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            We abandoned boring theory. We focus purely on execution and building your intuition for AI tools.
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(1, 1fr)",
+            gap: "24px",
+          }}
+          className="bento-grid"
+        >
+          {features.map((feature, i) => (
+            <BentoCard key={feature.title} feature={feature} index={i} />
+          ))}
+        </div>
+      </div>
+      <style>{`
+        @media (min-width: 768px) {
+          .bento-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
