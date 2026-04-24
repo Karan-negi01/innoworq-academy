@@ -252,12 +252,9 @@ export default function Hero({ onEnrollClick }) {
              { label: "PLACEMENT RATE", value: 94, suffix: "%" }
           ].map((stat, i) => (
             <div key={i} className="stat-card" style={{ textAlign: "left" }}>
-              <div style={{ 
-                fontSize: "11px", 
+              <div className="stat-label" style={{ 
                 fontWeight: 600, 
                 color: "#64748b", 
-                letterSpacing: "1px",
-                marginBottom: "4px"
               }}>
                 {stat.label}
               </div>
@@ -329,12 +326,13 @@ export default function Hero({ onEnrollClick }) {
         .hero-buttons { gap: 24px; }
         .hero-btn-primary, .hero-btn-secondary { padding: 20px 48px; fontSize: 16px; }
         .hero-stats {
-          margin-top: 100px;
-          border-radius: 32px;
-          padding: 32px 60px;
-          gap: 80px;
+          margin-top: 120px;
+          border-radius: 40px;
+          padding: 48px 80px;
+          gap: 100px;
         }
-        .stat-value { fontSize: 40px; }
+        .stat-value { fontSize: 56px; letter-spacing: -2px; }
+        .stat-label { fontSize: 13px; letter-spacing: 1.5px; margin-bottom: 8px; }
 
         @media (max-width: 1536px) {
           .hero-headline { fontSize: 110px; }
@@ -369,9 +367,11 @@ export default function Hero({ onEnrollClick }) {
             flex-direction: column;
             gap: 24px;
             width: 100%;
-            margin-top: 60px;
+            margin-top: 48px;
+            padding: 24px;
           }
-          .stat-value { fontSize: 24px; }
+          .stat-value { fontSize: 32px; letter-spacing: -1px; }
+          .stat-label { fontSize: 11px; margin-bottom: 4px; }
         }
       `}</style>
     </section>
