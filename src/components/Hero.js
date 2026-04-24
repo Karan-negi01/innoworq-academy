@@ -272,17 +272,20 @@ export default function Hero({ onEnrollClick }) {
         </motion.div>
       </div>
 
+      {/* Infinite Bottom Ticker */}
       <div 
         className="hero-ticker"
         style={{
           background: "#0a0a0a",
-          padding: "20px 0", // Reduced padding
+          padding: "20px 0", 
           width: "100%",
           overflow: "hidden",
           display: "flex",
           whiteSpace: "nowrap",
-          marginTop: "auto",
-          borderTop: "1px solid rgba(255,255,255,0.08)"
+          marginTop: "auto", // Back to auto for max bottom anchor
+          borderTop: "1px solid rgba(255,255,255,0.08)",
+          position: "relative",
+          zIndex: 20
         }}
       >
         <motion.div
@@ -314,9 +317,9 @@ export default function Hero({ onEnrollClick }) {
 
       <style>{`
         .hero-section {
-          padding-top: 180px;
-          padding-bottom: 120px;
-          min-height: 95vh;
+          padding-top: 140px;
+          padding-bottom: 0px;
+          min-height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
