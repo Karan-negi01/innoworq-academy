@@ -121,25 +121,32 @@ export default function ContactModal({ isOpen, onClose }) {
             }}
           />
 
-          {/* Modal */}
-          <motion.div
-            key="modal"
-            initial={{ opacity: 0, scale: 0.93, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.93, y: 20 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+          {/* Modal Centering Wrapper */}
+          <div 
             style={{
               position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "100%",
-              maxWidth: "520px",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               zIndex: 9999,
-              padding: "0 20px",
-              boxSizing: "border-box",
+              pointerEvents: "none",
+              padding: "20px"
             }}
           >
+            {/* Modal */}
+            <motion.div
+              key="modal"
+              initial={{ opacity: 0, scale: 0.93, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 30 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                width: "100%",
+                maxWidth: "520px",
+                pointerEvents: "auto",
+              }}
+            >
             <div
               style={{
                 background: "white",
@@ -360,6 +367,7 @@ export default function ContactModal({ isOpen, onClose }) {
               </div>
             </div>
           </motion.div>
+        </div>
 
           <style>{`
             @keyframes spin {
