@@ -71,8 +71,8 @@ export default function Hero({ onEnrollClick }) {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.08, // Very subtle to keep it premium and not distracting
-            filter: "contrast(1.2) brightness(0.8)"
+            opacity: 0.25, // High impact on Retina displays
+            filter: "contrast(1.1) brightness(0.95)"
           }}
           src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technological-world-with-blue-and-white-lights-22757-large.mp4"
         />
@@ -80,8 +80,8 @@ export default function Hero({ onEnrollClick }) {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(circle at center, transparent 0%, white 90%)",
-          opacity: 0.1
+          background: "radial-gradient(circle at center, transparent 0%, white 100%)",
+          opacity: 0.3
         }} />
       </div>
 
@@ -91,50 +91,36 @@ export default function Hero({ onEnrollClick }) {
           maxWidth: "1400px",
           margin: "0 auto",
           padding: "0 24px",
-          width: "100%",
           position: "relative",
           zIndex: 10,
+          textAlign: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center"
+          alignItems: "center"
         }}
       >
-        {/* Top specific badge */}
+        {/* Floating Badge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          style={{ marginBottom: "32px" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="hero-badge"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "8px 20px",
+            background: "rgba(255,255,255,0.8)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid #e2e8f0",
+            borderRadius: "100px",
+            marginBottom: "40px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
+          }}
         >
-          <div
-            className="hero-badge"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              padding: "6px 20px",
-              background: "rgba(255, 255, 255, 0.8)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(0,0,0,0.05)",
-              borderRadius: "100px",
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "#0a0a0a",
-              letterSpacing: "0.5px",
-              textTransform: "uppercase",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.03)"
-            }}
-          >
-            <span style={{ 
-              width: "8px", 
-              height: "8px", 
-              borderRadius: "50%", 
-              background: "#10b981",
-              boxShadow: "0 0 10px rgba(16,185,129,0.5)"
-            }} />
+          <div style={{ width: "8px", height: "8px", background: "#10b981", borderRadius: "50%", boxShadow: "0 0 10px #10b981" }} />
+          <span style={{ fontSize: "12px", fontWeight: 700, color: "#1e293b", textTransform: "uppercase", letterSpacing: "1px" }}>
             Enrollment Open • Cohort 04
-          </div>
+          </span>
         </motion.div>
 
         {/* Massive Editorial Headline */}
@@ -149,8 +135,8 @@ export default function Hero({ onEnrollClick }) {
             color: "#0a0a0a",
             lineHeight: 0.95,
             letterSpacing: "-0.04em",
-            marginBottom: "32px",
-            maxWidth: "1100px",
+            marginBottom: "40px",
+            maxWidth: "1200px",
           }}
         >
           The Era of the
@@ -180,7 +166,7 @@ export default function Hero({ onEnrollClick }) {
             color: "#475569",
             lineHeight: 1.6,
             marginBottom: "48px",
-            maxWidth: "680px",
+            maxWidth: "800px",
             fontWeight: 400,
           }}
         >
@@ -228,15 +214,14 @@ export default function Hero({ onEnrollClick }) {
             style={{
               background: "white",
               color: "#0a0a0a",
-              border: "1px solid rgba(0,0,0,0.1)",
+              border: "1px solid #e2e8f0",
               borderRadius: "100px",
               fontWeight: 600,
               cursor: "pointer",
               textDecoration: "none",
-              display: "inline-flex",
+              display: "flex",
               alignItems: "center",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.02)",
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Inter', sans-serif"
             }}
           >
             Explore Curriculum
@@ -290,16 +275,15 @@ export default function Hero({ onEnrollClick }) {
 
       {/* Infinite Bottom Ticker */}
       <div 
-        style={{ 
-          position: "absolute", 
-          bottom: 0, 
-          left: 0, 
-          right: 0,
-          background: "linear-gradient(to right, #4F46E5, #7C3AED)",
-          padding: "16px 0",
+        className="hero-ticker"
+        style={{
+          background: "#4F46E5",
+          padding: "24px 0",
+          width: "100%",
           overflow: "hidden",
           display: "flex",
-          whiteSpace: "nowrap"
+          whiteSpace: "nowrap",
+          marginTop: "auto"
         }}
       >
         <motion.div
@@ -314,15 +298,16 @@ export default function Hero({ onEnrollClick }) {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                color: "rgba(255,255,255,0.9)",
-                fontSize: "13px",
-                fontWeight: 600,
-                letterSpacing: "1.5px",
+                color: "rgba(255,255,255,1)",
+                fontSize: "15px",
+                fontWeight: 700,
+                letterSpacing: "2px",
+                textTransform: "uppercase",
                 fontFamily: "'Inter', sans-serif"
               }}
             >
               {item}
-              <span style={{ margin: "0 30px", opacity: 0.5 }}>✦</span>
+              <span style={{ margin: "0 40px", opacity: 0.6 }}>✦</span>
             </div>
           ))}
         </motion.div>
@@ -330,28 +315,38 @@ export default function Hero({ onEnrollClick }) {
 
       <style>{`
         .hero-section {
-          padding-top: 140px;
-          padding-bottom: 80px;
+          padding-top: 180px;
+          padding-bottom: 120px;
+          min-height: 95vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
-        .hero-headline { fontSize: 110px; }
-        .hero-subheadline { fontSize: 22px; }
-        .hero-buttons { gap: 20px; }
-        .hero-btn-primary, .hero-btn-secondary { padding: 18px 40px; fontSize: 15px; }
+        .hero-headline { fontSize: 130px; }
+        .hero-subheadline { fontSize: 24px; margin-bottom: 64px; }
+        .hero-buttons { gap: 24px; }
+        .hero-btn-primary, .hero-btn-secondary { padding: 20px 48px; fontSize: 16px; }
         .hero-stats {
-          margin-top: 80px;
-          border-radius: 24px;
-          padding: 24px 40px;
-          gap: 60px;
+          margin-top: 100px;
+          border-radius: 32px;
+          padding: 32px 60px;
+          gap: 80px;
         }
-        .stat-value { fontSize: 32px; }
+        .stat-value { fontSize: 40px; }
+
+        @media (max-width: 1536px) {
+          .hero-headline { fontSize: 110px; }
+          .hero-stats { gap: 60px; padding: 24px 40px; }
+        }
 
         @media (max-width: 1280px) {
+          .hero-section { padding-top: 140px; }
           .hero-headline { fontSize: 80px; }
           .hero-subheadline { fontSize: 20px; }
         }
 
         @media (max-width: 992px) {
-          .hero-section { padding-top: 120px; }
+          .hero-section { padding-top: 120px; min-height: auto; }
           .hero-headline { fontSize: 60px; }
           .hero-stats {
             gap: 40px;
@@ -360,10 +355,11 @@ export default function Hero({ onEnrollClick }) {
         }
 
         @media (max-width: 768px) {
+          .hero-section { padding-top: 80px; padding-bottom: 60px; }
           .hero-headline { fontSize: 44px; }
           .hero-subheadline { fontSize: 18px; margin-bottom: 32px; }
           .hero-badge { margin-bottom: 24px; }
-          .hero-br { display: none; } /* Allow natural wrapping on mobile */
+          .hero-br { display: none; }
           .hero-buttons { flex-direction: column; width: 100%; gap: 16px; }
           .hero-btn-primary, .hero-btn-secondary { width: 100%; justify-content: center; }
           
@@ -372,17 +368,6 @@ export default function Hero({ onEnrollClick }) {
             gap: 24px;
             width: 100%;
             margin-top: 60px;
-          }
-          .stat-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding-bottom: 16px;
-          }
-          .stat-card:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
           }
           .stat-value { fontSize: 24px; }
         }

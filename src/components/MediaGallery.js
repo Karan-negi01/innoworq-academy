@@ -85,21 +85,27 @@ export default function MediaGallery() {
         <motion.div className="media-gallery-scroll" style={{
           x,
           display: "flex",
-          alignItems: "center"
+          alignItems: "center",
+          gap: "60px", 
+          paddingLeft: "50vw", // Start from the middle
+          paddingRight: "10vw"
         }}>
           {mediaItems.map((item, index) => (
-            <div 
+            <motion.div 
               key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false, amount: 0.1 }}
               className="media-gallery-card"
               style={{
                 position: "relative",
                 aspectRatio: "16/9",
-                borderRadius: "24px",
+                borderRadius: "32px",
                 overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                boxShadow: "0 40px 100px rgba(0,0,0,0.8)",
                 flexShrink: 0,
-                background: "#111"
+                background: "#121212", // Placeholder if video fails
               }}
             >
               <video 
@@ -112,7 +118,7 @@ export default function MediaGallery() {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  filter: "brightness(0.7)"
+                  filter: "brightness(0.6)"
                 }}
               />
               
@@ -120,41 +126,42 @@ export default function MediaGallery() {
               <div className="media-gallery-overlay" style={{
                 position: "absolute",
                 inset: 0,
-                background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)",
+                background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%)",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
+                padding: "60px"
               }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                  <span className="media-tag" style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(5px)", border: "1px solid rgba(255,255,255,0.1)", color: "white", borderRadius: "100px", fontWeight: 700 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                  <span className="media-tag" style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.2)", color: "white", padding: "8px 20px", borderRadius: "100px", fontSize: "14px", fontWeight: 700, textTransform: "uppercase" }}>
                     {item.tag}
                   </span>
-                  <h3 className="media-overlay-title" style={{ fontWeight: 600, color: "white", margin: 0, letterSpacing: "-0.5px" }}>
+                  <h3 className="media-overlay-title" style={{ fontSize: "32px", fontWeight: 700, color: "white", margin: 0, letterSpacing: "-1px" }}>
                     {item.title}
                   </h3>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
 
       <style>{`
-        .media-gallery-section { height: 300vh; }
-        .media-gallery-badge { font-size: 12px; }
-        .media-gallery-title { font-size: clamp(48px, 6vw, 72px); }
-        .media-gallery-desc { font-size: 18px; }
-        .media-gallery-scroll { gap: 40px; padding-left: 45vw; }
-        .media-gallery-card { width: 60vw; max-width: 900px; }
-        .media-gallery-overlay { padding: 40px; }
-        .play-btn { width: 48px; height: 48px; }
-        .media-tag { padding: 4px 12px; font-size: 12px; }
-        .media-overlay-title { font-size: 24px; }
+        .media-gallery-section { height: 350vh; background: #050505 !important; }
+        .media-gallery-badge { font-size: 14px; letter-spacing: 2px; }
+        .media-gallery-title { font-size: clamp(60px, 8vw, 90px); }
+        .media-gallery-desc { font-size: 20px; max-width: 450px; opacity: 0.8; }
+        .media-gallery-card { width: 70vw; max-width: 1100px; }
+
+        @media (max-width: 1440px) {
+           .media-gallery-title { font-size: 72px; }
+           .media-gallery-card { width: 65vw; }
+        }
 
         @media (max-width: 1024px) {
           .media-gallery-text { left: 4%; max-width: 380px; }
-          .media-gallery-scroll { padding-left: 55vw; }
-          .media-gallery-card { width: 65vw; }
+          .media-gallery-scroll { padding-left: 60vw; }
+          .media-gallery-card { width: 75vw; }
         }
 
         @media (max-width: 768px) {
