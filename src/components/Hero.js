@@ -130,14 +130,14 @@ export default function Hero({ onEnrollClick }) {
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="hero-headline"
           style={{
-            fontSize: "clamp(50px, 8.5vw, 150px)", // Forced viewport scaling
+            fontSize: "clamp(48px, 7vw, 115px)", // Slightly reduced for balance
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: "#0a0a0a",
             lineHeight: 0.95,
             letterSpacing: "-0.04em",
-            marginBottom: "40px",
-            maxWidth: "1400px",
+            marginBottom: "32px",
+            maxWidth: "1200px",
           }}
         >
           The Era of the
@@ -165,10 +165,10 @@ export default function Hero({ onEnrollClick }) {
           className="hero-subheadline"
           style={{
             color: "#475569",
-            fontSize: "clamp(18px, 1.4vw, 24px)", // Scalable subheadline
+            fontSize: "clamp(17px, 1.1vw, 21px)", // Refined subheadline
             lineHeight: 1.6,
-            marginBottom: "56px",
-            maxWidth: "800px",
+            marginBottom: "48px",
+            maxWidth: "750px",
             fontWeight: 400,
           }}
         >
@@ -279,13 +279,13 @@ export default function Hero({ onEnrollClick }) {
         className="hero-ticker"
         style={{
           background: "#0a0a0a",
-          padding: "32px 0",
+          padding: "20px 0", // Reduced padding
           width: "100%",
           overflow: "hidden",
           display: "flex",
           whiteSpace: "nowrap",
           marginTop: "auto",
-          borderTop: "1px solid rgba(255,255,255,0.1)"
+          borderTop: "1px solid rgba(255,255,255,0.08)"
         }}
       >
         <motion.div

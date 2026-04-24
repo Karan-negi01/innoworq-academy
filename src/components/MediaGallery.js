@@ -147,16 +147,16 @@ export default function MediaGallery() {
       </div>
 
       <style>{`
-        .media-gallery-section { height: 400vh; background: #000 !important; }
-        .media-gallery-badge { font-size: 14px; color: #4F46E5; }
-        .media-gallery-title { font-size: 90px; }
-        .media-gallery-desc { font-size: 22px; max-width: 500px; opacity: 0.9; }
-        .media-gallery-card { width: 1000px; }
+        .media-gallery-section { height: 320vh; background: #000 !important; }
+        .media-gallery-badge { font-size: 13px; color: #4F46E5; }
+        .media-gallery-title { font-size: 72px; }
+        .media-gallery-desc { font-size: 19px; max-width: 450px; opacity: 0.85; }
+        .media-gallery-card { width: 900px; }
 
         @media (max-width: 1536px) {
-           .media-gallery-title { font-size: 72px; }
-           .media-gallery-card { width: 800px; }
-           .media-gallery-scroll { padding-left: 500px; }
+           .media-gallery-title { font-size: 64px; }
+           .media-gallery-card { width: 750px; }
+           .media-gallery-scroll { padding-left: 450px; }
         }
 
         @media (max-width: 1024px) {
