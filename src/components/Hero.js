@@ -49,20 +49,41 @@ export default function Hero({ onEnrollClick }) {
         overflow: "hidden",
       }}
     >
-      {/* Background Soft Glows */}
+      {/* Background Cinematic Video */}
       <div 
         style={{
           position: "absolute",
-          top: "10%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100vw",
-          height: "60vh",
-          background: "radial-gradient(ellipse at top, rgba(79,70,229,0.07), transparent 60%)",
-          pointerEvents: "none",
-          zIndex: 0
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          overflow: "hidden",
+          pointerEvents: "none"
         }}
-      />
+      >
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.08, // Very subtle to keep it premium and not distracting
+            filter: "contrast(1.2) brightness(0.8)"
+          }}
+          src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technological-world-with-blue-and-white-lights-22757-large.mp4"
+        />
+        {/* Gradient Overlay for better text readability */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(circle at center, transparent 0%, white 90%)",
+          opacity: 0.1
+        }} />
+      </div>
 
       <div
         className="hero-container"

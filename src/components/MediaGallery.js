@@ -2,19 +2,22 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const images = [
+const mediaItems = [
   {
-    src: "/gallery/ai_workflow_1_1777027613647.png",
+    type: "video",
+    src: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-1587-large.mp4",
     title: "Neural Architectures",
     tag: "Module 2.0"
   },
   {
-    src: "/gallery/ai_workflow_2_1777027652282.png",
+    type: "video",
+    src: "https://assets.mixkit.co/videos/preview/mixkit-flowing-energy-spheres-in-abstract-space-28704-large.mp4",
     title: "Data Pipelines",
     tag: "Workflow Auto"
   },
   {
-    src: "/gallery/ai_workflow_3_1777027675337.png",
+    type: "video",
+    src: "https://assets.mixkit.co/videos/preview/mixkit-abstract-animation-of-falling-bubbles-overlay-28684-large.mp4",
     title: "Agentic Systems",
     tag: "Final Project"
   }
@@ -61,7 +64,7 @@ export default function MediaGallery() {
             marginBottom: "24px",
             backdropFilter: "blur(10px)"
           }}>
-            Real World Execution
+            Cinematic Learning
           </span>
           <h2 className="media-gallery-title" style={{
             fontWeight: 800,
@@ -71,10 +74,10 @@ export default function MediaGallery() {
             letterSpacing: "-0.04em",
             marginBottom: "24px"
           }}>
-            Build what<br className="media-title-br" /> matters.
+            Visualize the<br className="media-title-br" /> Machine.
           </h2>
           <p className="media-gallery-desc" style={{ color: "#94a3b8", lineHeight: 1.6 }}>
-            Our graduates don't just learn theory. They build systems, pipelines, and agents that fundamentally transform business operations. From college to career, your portfolio will speak for itself.
+            Step into the future with our cinematic curriculum. We don't just show screenshots; we visualize the core of Agentic AI.
           </p>
         </div>
 
@@ -84,7 +87,7 @@ export default function MediaGallery() {
           display: "flex",
           alignItems: "center"
         }}>
-          {images.map((img, index) => (
+          {mediaItems.map((item, index) => (
             <div 
               key={index}
               className="media-gallery-card"
@@ -95,47 +98,39 @@ export default function MediaGallery() {
                 overflow: "hidden",
                 border: "1px solid rgba(255,255,255,0.1)",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
-                flexShrink: 0
+                flexShrink: 0,
+                background: "#111"
               }}
             >
-              <img 
-                src={img.src} 
-                alt={img.title}
+              <video 
+                src={item.src} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  filter: "brightness(0.9)"
+                  filter: "brightness(0.7)"
                 }}
               />
+              
               {/* Play UI Overlay */}
               <div className="media-gallery-overlay" style={{
                 position: "absolute",
                 inset: 0,
-                background: "radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 100%)",
+                background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%)",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
               }}>
-                <div className="play-btn" style={{ 
-                  borderRadius: "50%", 
-                  background: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(10px)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "24px",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)"
-                }}>
-                  <div style={{ width: 0, height: 0, borderTop: "8px solid transparent", borderBottom: "8px solid transparent", borderLeft: "12px solid white", marginLeft: "4px" }} />
-                </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                  <span className="media-tag" style={{ background: "#4F46E5", color: "white", borderRadius: "100px", fontWeight: 700 }}>
-                    {img.tag}
+                  <span className="media-tag" style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(5px)", border: "1px solid rgba(255,255,255,0.1)", color: "white", borderRadius: "100px", fontWeight: 700 }}>
+                    {item.tag}
                   </span>
                   <h3 className="media-overlay-title" style={{ fontWeight: 600, color: "white", margin: 0, letterSpacing: "-0.5px" }}>
-                    {img.title}
+                    {item.title}
                   </h3>
                 </div>
               </div>
