@@ -11,12 +11,13 @@ export default function FinalCTA({ onEnrollClick }) {
     offset: ["start end", "end end"]
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["48px", "0px"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const borderRadius = useTransform(scrollYProgress, [0, 1], ["40px", "0px"]);
 
   return (
-    <section ref={containerRef} style={{ background: "white", paddingBottom: "0" }}>
+    <section ref={containerRef} className="final-cta-section" style={{ background: "white", paddingBottom: "0" }}>
       <motion.div
+        className="final-cta-container"
         style={{
           scale,
           borderRadius,
@@ -69,35 +70,31 @@ export default function FinalCTA({ onEnrollClick }) {
         />
 
         {/* Content */}
-        <div style={{ position: "relative", zIndex: 10, maxWidth: "800px", padding: "0 24px" }}>
+        <div className="final-cta-content" style={{ position: "relative", zIndex: 10, maxWidth: "800px", padding: "0 24px" }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div style={{ display: "flex", justifyContent: "center", gap: "16px", marginBottom: "40px" }}>
+            <div className="final-cta-avatars" style={{ display: "flex", justifyContent: "center", gap: "16px", marginBottom: "40px" }}>
               {[
                 "/gallery/ai_workflow_1_1777027613647.png",
                 "/gallery/ai_workflow_3_1777027675337.png",
                 "/gallery/ai_workflow_2_1777027652282.png"
               ].map((src, i) => (
-                <div key={i} style={{
-                  width: "64px",
-                  height: "64px",
+                <div key={i} className="avatar-circle" style={{
                   borderRadius: "50%",
                   border: "2px solid rgba(255,255,255,0.2)",
                   overflow: "hidden",
                   boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                  marginLeft: i > 0 ? "-24px" : "0" // Overlap avatars
                 }}>
                   <img src={src} alt="Workflow" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
               ))}
             </div>
 
-            <h2 style={{
-              fontSize: "clamp(48px, 6vw, 80px)",
+            <h2 className="final-cta-title" style={{
               fontWeight: 800,
               fontFamily: "'Inter', sans-serif",
               color: "white",
@@ -107,8 +104,7 @@ export default function FinalCTA({ onEnrollClick }) {
             }}>
               Don't get left behind.
             </h2>
-            <p style={{
-              fontSize: "20px",
+            <p className="final-cta-subtitle" style={{
               color: "#cbd5e1",
               maxWidth: "600px",
               margin: "0 auto 48px",
@@ -119,13 +115,12 @@ export default function FinalCTA({ onEnrollClick }) {
 
             <button
               onClick={onEnrollClick}
+              className="final-cta-button"
               style={{
-                padding: "24px 48px",
                 background: "white",
                 color: "black",
                 border: "none",
                 borderRadius: "100px",
-                fontSize: "18px",
                 fontWeight: 700,
                 cursor: "pointer",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
@@ -147,6 +142,25 @@ export default function FinalCTA({ onEnrollClick }) {
           </motion.div>
         </div>
       </motion.div>
+
+      <style>{`
+        .final-cta-section { padding-top: 160px; }
+        .final-cta-title { font-size: clamp(48px, 6vw, 80px); }
+        .final-cta-subtitle { font-size: 20px; }
+        .final-cta-button { padding: 24px 48px; font-size: 18px; }
+        .avatar-circle { width: 64px; height: 64px; margin-left: -24px; }
+        .avatar-circle:first-child { margin-left: 0; }
+
+        @media (max-width: 768px) {
+          .final-cta-section { padding-top: 80px; }
+          .final-cta-container { min-height: 60vh !important; }
+          .final-cta-title { font-size: 44px; }
+          .final-cta-subtitle { font-size: 16px; margin-bottom: 32px !important; }
+          .final-cta-button { padding: 18px 36px; font-size: 16px; width: 100%; }
+          .avatar-circle { width: 48px; height: 48px; margin-left: -16px; }
+          .final-cta-avatars { margin-bottom: 24px !important; }
+        }
+      `}</style>
     </section>
   );
 }

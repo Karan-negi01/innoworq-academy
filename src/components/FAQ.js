@@ -39,9 +39,9 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
     >
       <button
         onClick={toggleOpen}
+        className="faq-button"
         style={{
           width: "100%",
-          padding: "32px 0",
           background: "none",
           border: "none",
           display: "flex",
@@ -51,22 +51,21 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
           textAlign: "left"
         }}
       >
-        <h3 style={{
-          fontSize: "20px",
+        <h3 className="faq-question" style={{
           fontWeight: 600,
           fontFamily: "'Inter', sans-serif",
           color: isOpen ? "#4F46E5" : "#0a0a0a",
           letterSpacing: "-0.3px",
-          transition: "color 0.3s ease"
+          transition: "color 0.3s ease",
+          paddingRight: "16px"
         }}>
           {faq.question}
         </h3>
         <motion.div
+          className="faq-icon"
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ ease: "backOut", duration: 0.3 }}
           style={{
-            width: "32px",
-            height: "32px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -90,10 +89,7 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.4 }}
           >
-            <p style={{
-              paddingBottom: "32px",
-              paddingRight: "80px",
-              fontSize: "16px",
+            <p className="faq-answer" style={{
               color: "#475569",
               lineHeight: 1.6
             }}>
@@ -112,19 +108,18 @@ export default function FAQ() {
   const inView = useInView(targetRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="faq" style={{ padding: "160px 0", background: "white" }}>
+    <section id="faq" className="faq-section" style={{ background: "white" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }} ref={targetRef}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          style={{ marginBottom: "64px" }}
+          className="faq-header"
         >
           <span style={{ fontSize: "14px", fontWeight: 700, color: "#4F46E5", textTransform: "uppercase", letterSpacing: "1px" }}>
             FAQ
           </span>
-          <h2 style={{
-            fontSize: "clamp(40px, 5vw, 56px)",
+          <h2 className="faq-title" style={{
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: "#0a0a0a",
@@ -147,6 +142,26 @@ export default function FAQ() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .faq-section { padding: 160px 0; }
+        .faq-header { margin-bottom: 64px; }
+        .faq-title { font-size: clamp(40px, 5vw, 56px); }
+        .faq-button { padding: 32px 0; }
+        .faq-question { font-size: 20px; }
+        .faq-answer { font-size: 16px; padding-bottom: 32px; padding-right: 80px; }
+        .faq-icon { width: 32px; height: 32px; }
+
+        @media (max-width: 768px) {
+          .faq-section { padding: 80px 0; }
+          .faq-header { margin-bottom: 40px; }
+          .faq-title { font-size: 36px; }
+          .faq-button { padding: 24px 0; }
+          .faq-question { font-size: 18px; }
+          .faq-answer { font-size: 15px; padding-bottom: 24px; padding-right: 16px; }
+          .faq-icon { width: 28px; height: 28px; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -10,7 +10,7 @@ const features = [
     description: "Forget typing syntax. Learn to generate production-ready code natively using high-end AI agents. We focus on outcome, not boilerplate.",
     color: "#4F46E5",
     bg: "linear-gradient(135deg, rgba(79,70,229,0.08), rgba(79,70,229,0.02))",
-    span: "col-span-1 md:col-span-2", // Wide box
+    desktopSpan: 2, 
   },
   {
     icon: "💼",
@@ -18,7 +18,7 @@ const features = [
     description: "Skills taught by professionals, for professionals.",
     color: "#7C3AED",
     bg: "linear-gradient(135deg, rgba(124,58,237,0.08), rgba(124,58,237,0.02))",
-    span: "col-span-1", // Square box
+    desktopSpan: 1, 
   },
   {
     icon: "📁",
@@ -26,7 +26,7 @@ const features = [
     description: "Don't just show certificates. Show your deployed agents working live.",
     color: "#0a0a0a",
     bg: "linear-gradient(135deg, rgba(10,10,10,0.05), rgba(10,10,10,0.01))",
-    span: "col-span-1", // Square box
+    desktopSpan: 1, 
   },
   {
     icon: "🎯",
@@ -34,7 +34,7 @@ const features = [
     description: "20 hours of pure, dense, action-oriented learning. Every minute is spent on tools you'll actually use on the job tomorrow.",
     color: "#10b981",
     bg: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02))",
-    span: "col-span-1 md:col-span-2", // Wide box
+    desktopSpan: 2,
   },
 ];
 
@@ -48,10 +48,9 @@ function BentoCard({ feature, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className={`bento-card span-${feature.desktopSpan}`}
       style={{
         background: feature.bg,
-        borderRadius: "24px",
-        padding: "40px",
         border: "1px solid rgba(0,0,0,0.04)",
         boxShadow: "0 10px 40px rgba(0,0,0,0.02)",
         position: "relative",
@@ -59,9 +58,7 @@ function BentoCard({ feature, index }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        minHeight: "260px"
       }}
-      className={feature.span}
       whileHover={{ y: -4, boxShadow: "0 20px 50px rgba(0,0,0,0.06)" }}
     >
       <div 
@@ -84,8 +81,8 @@ function BentoCard({ feature, index }) {
 
       <div>
         <h3
+          className="bento-title"
           style={{
-            fontSize: "22px",
             fontWeight: 700,
             fontFamily: "'Inter', sans-serif",
             color: "#0a0a0a",
@@ -97,8 +94,8 @@ function BentoCard({ feature, index }) {
           {feature.title}
         </h3>
         <p
+          className="bento-desc"
           style={{
-            fontSize: "15px",
             color: "#475569",
             lineHeight: 1.6,
             fontWeight: 400,
@@ -119,8 +116,8 @@ export default function WhyChooseUs() {
   return (
     <section
       id="features"
+      className="features-section"
       style={{
-        padding: "120px 0",
         background: "transparent",
       }}
     >
@@ -132,10 +129,11 @@ export default function WhyChooseUs() {
           animate={titleInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ textAlign: "center", marginBottom: "80px" }}
+          className="features-header"
         >
           <h2
+            className="features-title"
             style={{
-              fontSize: "clamp(36px, 5vw, 56px)",
               fontWeight: 800,
               fontFamily: "'Inter', sans-serif",
               color: "#0a0a0a",
@@ -145,14 +143,14 @@ export default function WhyChooseUs() {
             }}
           >
             Built for the AI Era,
-            <br />
+            <br className="features-br" />
             <span style={{ color: "#94a3b8", fontWeight: 400, fontStyle: "italic", fontFamily: "'Poppins', sans-serif" }}>
-              Not the Past.
+              {" "}Not the Past.
             </span>
           </h2>
           <p
+            className="features-subtitle"
             style={{
-              fontSize: "18px",
               color: "#475569",
               maxWidth: "520px",
               margin: "0 auto",
@@ -167,7 +165,6 @@ export default function WhyChooseUs() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(1, 1fr)",
             gap: "24px",
           }}
           className="bento-grid"
@@ -178,10 +175,48 @@ export default function WhyChooseUs() {
         </div>
       </div>
       <style>{`
-        @media (min-width: 768px) {
+        .features-section { padding: 120px 0; }
+        .bento-card {
+          border-radius: 24px;
+          padding: 40px;
+          min-height: 260px;
+        }
+        .bento-title { font-size: 22px; }
+        .bento-desc { font-size: 15px; }
+        .features-title { font-size: clamp(36px, 5vw, 56px); }
+        .features-subtitle { font-size: 18px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+          .features-section { padding: 80px 0; }
+          .features-header { margin-bottom: 40px !important; }
+          .features-title { font-size: 36px; }
+          .features-subtitle { font-size: 16px; }
+          .features-br { display: none; }
+          .bento-grid {
+            grid-template-columns: 1fr;
+          }
+          .bento-card {
+            padding: 32px;
+            min-height: auto;
+          }
+        }
+
+        /* Tablet / Small Laptop */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .bento-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .bento-card.span-2 { grid-column: span 2; }
+        }
+
+        /* Desktop */
+        @media (min-width: 1025px) {
           .bento-grid {
             grid-template-columns: repeat(3, 1fr) !important;
           }
+          .bento-card.span-2 { grid-column: span 2; }
+          .bento-card.span-1 { grid-column: span 1; }
         }
       `}</style>
     </section>

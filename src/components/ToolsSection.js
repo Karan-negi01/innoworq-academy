@@ -36,39 +36,40 @@ function BrutalistMarquee({ items, direction = 1, speed = 30 }) {
       <motion.div
         animate={{ x: direction === 1 ? ["0%", "-50%"] : ["-50%", "0%"] }}
         transition={{ ease: "linear", duration: speed, repeat: Infinity }}
-        style={{ display: "flex", gap: "60px", width: "max-content", paddingRight: "60px", alignItems: "center" }}
+        className="marquee-container"
+        style={{ display: "flex", width: "max-content", alignItems: "center" }}
       >
         {duplicatedItems.map((tool, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "center", gap: "60px" }}>
+          <div key={index} className="marquee-item-wrapper" style={{ display: "flex", alignItems: "center" }}>
             <motion.div
               whileHover="hover"
               initial="initial"
+              className="marquee-item-inner"
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "24px",
                 cursor: "pointer"
               }}
             >
               <motion.div 
+                className="tool-icon"
                 variants={{
                   initial: { filter: "grayscale(100%) blur(2px)", opacity: 0.3, scale: 0.9 },
                   hover: { filter: "grayscale(0%) blur(0px)", opacity: 1, scale: 1.2 }
                 }}
                 transition={{ duration: 0.3 }}
-                style={{ fontSize: "56px" }}
               >
                 {tool.icon}
               </motion.div>
               
               <motion.span 
+                className="tool-name"
                 variants={{
                   initial: { color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.15)" },
                   hover: { color: tool.color, WebkitTextStroke: `0px ${tool.color}`, textShadow: `0 0 40px ${tool.color}80` }
                 }}
                 transition={{ duration: 0.3 }}
                 style={{ 
-                  fontSize: "clamp(64px, 8vw, 120px)", 
                   fontWeight: 900, 
                   fontFamily: "'Inter', sans-serif", 
                   letterSpacing: "-0.04em",
@@ -80,7 +81,7 @@ function BrutalistMarquee({ items, direction = 1, speed = 30 }) {
             </motion.div>
 
             {/* Separator Star */}
-            <div style={{ color: "rgba(255,255,255,0.1)", fontSize: "40px" }}>✧</div>
+            <div className="marquee-star" style={{ color: "rgba(255,255,255,0.1)" }}>✧</div>
           </div>
         ))}
       </motion.div>
@@ -95,8 +96,8 @@ export default function ToolsSection() {
   return (
     <section
       id="tools"
+      className="tools-section"
       style={{
-        padding: "160px 0",
         background: "#050505", // Deep black background
         overflow: "hidden",
         position: "relative"
@@ -116,7 +117,7 @@ export default function ToolsSection() {
       }} />
 
       {/* Header Container */}
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 10, marginBottom: "80px" }}>
+      <div className="tools-header-container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 10 }}>
         <motion.div
           ref={titleRef}
           initial={{ opacity: 0, y: 40 }}
@@ -124,15 +125,14 @@ export default function ToolsSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+          <div className="tools-badge" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
             <div style={{ width: "12px", height: "12px", background: "#4F46E5", borderRadius: "50%", boxShadow: "0 0 20px #4F46E5" }} />
             <span style={{ fontSize: "14px", fontWeight: 700, color: "white", letterSpacing: "2px", textTransform: "uppercase" }}>
               Weaponize Your Workflow
             </span>
           </div>
           
-          <h2 style={{
-            fontSize: "clamp(40px, 6vw, 80px)",
+          <h2 className="tools-title" style={{
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: "white",
@@ -146,7 +146,9 @@ export default function ToolsSection() {
       </div>
 
       {/* Giant Brutalist Marquees */}
-      <div style={{ 
+      <div 
+        className="marquee-wrapper"
+        style={{ 
         position: "relative", 
         width: "100vw", 
         marginLeft: "calc(-50vw + 50%)", 
@@ -157,7 +159,6 @@ export default function ToolsSection() {
         maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
         display: "flex",
         flexDirection: "column",
-        gap: "10px"
       }}>
         <BrutalistMarquee items={row1} direction={1} speed={80} />
         <BrutalistMarquee items={row2} direction={-1} speed={90} />
@@ -165,12 +166,48 @@ export default function ToolsSection() {
       </div>
 
       {/* Very bottom decorative line */}
-      <div style={{ 
+      <div className="tools-divider" style={{ 
         width: "100%", 
         height: "1px", 
         background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
-        marginTop: "120px"
       }} />
+
+      <style>{`
+        .tools-section { padding: 160px 0; }
+        .tools-header-container { margin-bottom: 80px; }
+        .tools-title { font-size: clamp(40px, 6vw, 80px); }
+        .marquee-container { gap: 60px; padding-right: 60px; }
+        .marquee-item-wrapper { gap: 60px; }
+        .marquee-item-inner { gap: 24px; }
+        .tool-icon { font-size: 56px; }
+        .tool-name { font-size: clamp(64px, 8vw, 120px); }
+        .marquee-star { font-size: 40px; }
+        .marquee-wrapper { gap: 10px; }
+        .tools-divider { margin-top: 120px; }
+
+        @media (max-width: 1024px) {
+          .marquee-container { gap: 40px; padding-right: 40px; }
+          .marquee-item-wrapper { gap: 40px; }
+          .tool-icon { font-size: 40px; }
+          .tool-name { font-size: 64px; }
+          .marquee-star { font-size: 30px; }
+        }
+
+        @media (max-width: 768px) {
+          .tools-section { padding: 80px 0; }
+          .tools-header-container { margin-bottom: 40px; }
+          .tools-title { font-size: 36px; }
+          .marquee-wrapper { gap: 0px; transform: rotate(0deg) scale(1); }
+          
+          .marquee-container { gap: 24px; padding-right: 24px; }
+          .marquee-item-wrapper { gap: 24px; }
+          .marquee-item-inner { gap: 12px; }
+          .tool-icon { font-size: 32px; }
+          .tool-name { font-size: 40px; }
+          .marquee-star { font-size: 20px; }
+          .tools-divider { margin-top: 60px; }
+        }
+      `}</style>
     </section>
   );
 }

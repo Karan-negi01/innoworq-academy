@@ -10,7 +10,7 @@ function useCountUp(end, duration = 2000, start = false) {
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4); // Quertic ease out for super smooth finish
+      const eased = 1 - Math.pow(1 - progress, 4); 
       setCount(Math.floor(eased * end));
       if (progress < 1) requestAnimationFrame(step);
       else setCount(end);
@@ -39,13 +39,12 @@ export default function Hero({ onEnrollClick }) {
     <section
       ref={ref}
       id="hero"
+      className="hero-section"
       style={{
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        paddingTop: "120px", // clearance for navbar
-        paddingBottom: "60px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -66,6 +65,7 @@ export default function Hero({ onEnrollClick }) {
       />
 
       <div
+        className="hero-container"
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
@@ -87,6 +87,7 @@ export default function Hero({ onEnrollClick }) {
           style={{ marginBottom: "32px" }}
         >
           <div
+            className="hero-badge"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -120,8 +121,8 @@ export default function Hero({ onEnrollClick }) {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="hero-headline"
           style={{
-            fontSize: "clamp(56px, 9vw, 110px)",
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: "#0a0a0a",
@@ -132,7 +133,7 @@ export default function Hero({ onEnrollClick }) {
           }}
         >
           The Era of the
-          <br />
+          <br className="hero-br" />
           <span
             style={{
               fontStyle: "italic",
@@ -144,7 +145,7 @@ export default function Hero({ onEnrollClick }) {
               display: "inline-block"
             }}
           >
-            AI Generalist.
+            {" "}AI Generalist.
           </span>
         </motion.h1>
 
@@ -153,8 +154,8 @@ export default function Hero({ onEnrollClick }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
+          className="hero-subheadline"
           style={{
-            fontSize: "clamp(18px, 2vw, 22px)",
             color: "#475569",
             lineHeight: 1.6,
             marginBottom: "48px",
@@ -170,19 +171,19 @@ export default function Hero({ onEnrollClick }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}
+          className="hero-buttons"
+          style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
         >
           <motion.button
             onClick={onEnrollClick}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
+            className="hero-btn-primary"
             style={{
-              padding: "18px 40px",
               background: "#0a0a0a",
               color: "white",
               border: "1px solid #000",
               borderRadius: "100px",
-              fontSize: "15px",
               fontWeight: 600,
               cursor: "pointer",
               boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
@@ -204,13 +205,12 @@ export default function Hero({ onEnrollClick }) {
             href="#curriculum"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            className="hero-btn-secondary"
             style={{
-              padding: "18px 40px",
               background: "white",
               color: "#0a0a0a",
               border: "1px solid rgba(0,0,0,0.1)",
               borderRadius: "100px",
-              fontSize: "15px",
               fontWeight: 600,
               cursor: "pointer",
               textDecoration: "none",
@@ -230,14 +230,10 @@ export default function Hero({ onEnrollClick }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            marginTop: "80px",
             background: "rgba(255, 255, 255, 0.7)",
             backdropFilter: "blur(20px)",
             border: "1px solid rgba(0,0,0,0.06)",
-            borderRadius: "24px",
-            padding: "24px 40px",
             display: "flex",
-            gap: "60px",
             boxShadow: "0 20px 40px rgba(0,0,0,0.04)",
             flexWrap: "wrap",
             justifyContent: "center"
@@ -249,7 +245,7 @@ export default function Hero({ onEnrollClick }) {
              { label: "MODULES", value: 9, suffix: "" },
              { label: "PLACEMENT RATE", value: 94, suffix: "%" }
           ].map((stat, i) => (
-            <div key={i} style={{ textAlign: "left" }}>
+            <div key={i} className="stat-card" style={{ textAlign: "left" }}>
               <div style={{ 
                 fontSize: "11px", 
                 fontWeight: 600, 
@@ -259,8 +255,7 @@ export default function Hero({ onEnrollClick }) {
               }}>
                 {stat.label}
               </div>
-              <div style={{ 
-                fontSize: "32px", 
+              <div className="stat-value" style={{ 
                 fontWeight: 800, 
                 fontFamily: "'Inter', sans-serif",
                 color: "#0a0a0a",
@@ -315,11 +310,62 @@ export default function Hero({ onEnrollClick }) {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        .hero-section {
+          padding-top: 140px;
+          padding-bottom: 80px;
+        }
+        .hero-headline { fontSize: 110px; }
+        .hero-subheadline { fontSize: 22px; }
+        .hero-buttons { gap: 20px; }
+        .hero-btn-primary, .hero-btn-secondary { padding: 18px 40px; fontSize: 15px; }
+        .hero-stats {
+          margin-top: 80px;
+          border-radius: 24px;
+          padding: 24px 40px;
+          gap: 60px;
+        }
+        .stat-value { fontSize: 32px; }
+
+        @media (max-width: 1280px) {
+          .hero-headline { fontSize: 80px; }
+          .hero-subheadline { fontSize: 20px; }
+        }
+
+        @media (max-width: 992px) {
+          .hero-section { padding-top: 120px; }
+          .hero-headline { fontSize: 60px; }
           .hero-stats {
-            gap: 30px !important;
-            padding: 24px !important;
+            gap: 40px;
+            padding: 24px;
           }
+        }
+
+        @media (max-width: 768px) {
+          .hero-headline { fontSize: 44px; }
+          .hero-subheadline { fontSize: 18px; margin-bottom: 32px; }
+          .hero-badge { margin-bottom: 24px; }
+          .hero-br { display: none; } /* Allow natural wrapping on mobile */
+          .hero-buttons { flex-direction: column; width: 100%; gap: 16px; }
+          .hero-btn-primary, .hero-btn-secondary { width: 100%; justify-content: center; }
+          
+          .hero-stats {
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+            margin-top: 60px;
+          }
+          .stat-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 16px;
+          }
+          .stat-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
+          .stat-value { fontSize: 24px; }
         }
       `}</style>
     </section>

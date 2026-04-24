@@ -19,8 +19,8 @@ export default function Pricing({ onEnrollClick }) {
   return (
     <section
       id="pricing"
+      className="pricing-section"
       style={{
-        padding: "160px 0",
         background: "#050505", // Deep premium black
         position: "relative",
         overflow: "hidden"
@@ -46,9 +46,9 @@ export default function Pricing({ onEnrollClick }) {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ textAlign: "center", marginBottom: "80px" }}
+          className="pricing-header"
         >
-          <h2 style={{
-            fontSize: "clamp(36px, 5vw, 56px)",
+          <h2 className="pricing-title" style={{
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: "white",
@@ -62,7 +62,7 @@ export default function Pricing({ onEnrollClick }) {
               future leverage.
             </span>
           </h2>
-          <p style={{ fontSize: "18px", color: "#94a3b8", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>
+          <p className="pricing-subtitle" style={{ color: "#94a3b8", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>
             One straightforward price. No upsells. Gain the skills required to 10x your productivity and career value.
           </p>
         </motion.div>
@@ -72,6 +72,7 @@ export default function Pricing({ onEnrollClick }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="pricing-card"
           style={{
             maxWidth: "900px",
             margin: "0 auto",
@@ -87,7 +88,7 @@ export default function Pricing({ onEnrollClick }) {
           }}
         >
           {/* Left Side - Details */}
-          <div style={{ flex: "1 1 500px", padding: "64px 48px", borderRight: "1px solid rgba(255,255,255,0.05)" }}>
+          <div className="pricing-left" style={{ flex: "1 1 500px", borderRight: "1px solid rgba(255,255,255,0.05)" }}>
             <h3 style={{ fontSize: "24px", fontWeight: 700, color: "white", marginBottom: "16px", letterSpacing: "-0.5px" }}>
               Professional Certification
             </h3>
@@ -118,9 +119,8 @@ export default function Pricing({ onEnrollClick }) {
           </div>
 
           {/* Right Side - Price & CTA */}
-          <div style={{ 
+          <div className="pricing-right" style={{ 
             flex: "1 1 300px", 
-            padding: "64px 48px", 
             background: "linear-gradient(135deg, rgba(79,70,229,0.05), rgba(0,0,0,0))",
             display: "flex",
             flexDirection: "column",
@@ -171,6 +171,28 @@ export default function Pricing({ onEnrollClick }) {
           </div>
         </motion.div>
       </div>
+
+      <style>{`
+        .pricing-section { padding: 160px 0; }
+        .pricing-title { font-size: clamp(36px, 5vw, 56px); }
+        .pricing-subtitle { font-size: 18px; }
+        .pricing-left { padding: 64px 48px; }
+        .pricing-right { padding: 64px 48px; }
+
+        @media (max-width: 768px) {
+          .pricing-section { padding: 80px 0; }
+          .pricing-header { margin-bottom: 40px !important; }
+          .pricing-title { font-size: 36px; }
+          .pricing-subtitle { font-size: 16px; }
+          
+          .pricing-left { 
+            padding: 32px 24px; 
+            border-right: none !important;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+          }
+          .pricing-right { padding: 32px 24px; }
+        }
+      `}</style>
     </section>
   );
 }

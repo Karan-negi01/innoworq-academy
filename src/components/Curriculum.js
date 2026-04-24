@@ -79,10 +79,10 @@ function ModuleCard({ mod, index }) {
       initial={{ opacity: 0, x: 20 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="module-card"
       style={{
         background: "white",
         borderRadius: "24px",
-        padding: "32px",
         border: "1px solid rgba(0,0,0,0.06)",
         boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
         marginBottom: "24px",
@@ -109,8 +109,8 @@ function ModuleCard({ mod, index }) {
       </div>
 
       <h3
+        className="module-title"
         style={{
-          fontSize: "24px",
           fontWeight: 700,
           fontFamily: "'Inter', sans-serif",
           color: "#0a0a0a",
@@ -154,8 +154,8 @@ export default function Curriculum() {
   return (
     <section
       id="curriculum"
+      className="curriculum-section"
       style={{
-        padding: "160px 0",
         background: "#fafafa",
         position: "relative"
       }}
@@ -185,8 +185,8 @@ export default function Curriculum() {
             Curriculum
           </span>
           <h2
+            className="curriculum-title"
             style={{
-              fontSize: "clamp(40px, 5vw, 64px)",
               fontWeight: 800,
               fontFamily: "'Inter', sans-serif",
               color: "#0a0a0a",
@@ -204,8 +204,8 @@ export default function Curriculum() {
             </span>
           </h2>
           <p
+            className="curriculum-subtitle"
             style={{
-              fontSize: "18px",
               color: "#475569",
               lineHeight: 1.6,
               marginBottom: "40px",
@@ -249,6 +249,7 @@ export default function Curriculum() {
       </div>
 
       <style>{`
+        .curriculum-section { padding: 160px 0; }
         .curriculum-container {
           display: grid;
           grid-template-columns: 1fr 1.2fr;
@@ -259,6 +260,15 @@ export default function Curriculum() {
           position: sticky;
           top: 120px;
         }
+        .curriculum-title { font-size: clamp(40px, 5vw, 64px); }
+        .curriculum-subtitle { font-size: 18px; }
+        .module-card { padding: 32px; }
+        .module-title { font-size: 24px; }
+
+        @media (max-width: 1280px) {
+          .curriculum-container { gap: 60px; }
+        }
+
         @media (max-width: 992px) {
           .curriculum-container {
             grid-template-columns: 1fr;
@@ -267,7 +277,18 @@ export default function Curriculum() {
           .sticky-sidebar {
             position: relative;
             top: 0;
+            margin-bottom: 20px;
           }
+          .curriculum-section { padding: 120px 0; }
+        }
+
+        @media (max-width: 768px) {
+          .curriculum-section { padding: 80px 0; }
+          .curriculum-title { font-size: 40px; }
+          .curriculum-subtitle { font-size: 16px; margin-bottom: 32px; }
+          .curriculum-container { gap: 40px; }
+          .module-card { padding: 24px; border-radius: 20px; }
+          .module-title { font-size: 20px; }
         }
       `}</style>
     </section>
