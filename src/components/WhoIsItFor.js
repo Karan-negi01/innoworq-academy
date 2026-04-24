@@ -22,7 +22,11 @@ function AudienceCard({ item, index }) {
       initial={{ opacity: 0, scale: 0.92, y: 20 }}
       animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -5, scale: 1.03 }}
+      whileHover={{ 
+        y: -5, 
+        scale: 1.03,
+        boxShadow: "0 16px 40px rgba(79,70,229,0.12)"
+      }}
       style={{
         background: "white",
         borderRadius: "20px",
@@ -32,9 +36,6 @@ function AudienceCard({ item, index }) {
         boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
         cursor: "default",
         transition: "box-shadow 0.3s ease, border-color 0.3s ease",
-      }}
-      onHoverStart={(e) => {
-        e.target.style && (e.target.style.boxShadow = "0 16px 40px rgba(79,70,229,0.12)");
       }}
     >
       <div

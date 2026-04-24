@@ -139,8 +139,14 @@ export default function Pricing({ onEnrollClick }) {
               All taxes included. Seats are strictly limited.
             </div>
 
-            <button
+            <motion.button
               onClick={onEnrollClick}
+              whileHover={{ 
+                y: -2, 
+                scale: 1.02,
+                boxShadow: "0 10px 30px rgba(255,255,255,0.2)"
+              }}
+              whileTap={{ scale: 0.98 }}
               style={{
                 width: "100%",
                 padding: "20px",
@@ -154,17 +160,9 @@ export default function Pricing({ onEnrollClick }) {
                 transition: "all 0.3s ease",
                 fontFamily: "'Inter', sans-serif"
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px) scale(1.02)";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(255,255,255,0.2)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0) scale(1)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
             >
               Secure Your Seat
-            </button>
+            </motion.button>
             <div style={{ marginTop: "24px", fontSize: "12px", color: "#64748b", display: "flex", alignItems: "center", gap: "6px" }}>
               <span style={{ filter: "grayscale(100%)" }}>🔒</span> Bank-grade SSL encryption
             </div>

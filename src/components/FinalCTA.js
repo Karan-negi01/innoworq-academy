@@ -113,8 +113,14 @@ export default function FinalCTA({ onEnrollClick }) {
               Join the next cohort of AI Generalists. Learn the skills that companies are desperately hiring for today.
             </p>
 
-            <button
+            <motion.button
               onClick={onEnrollClick}
+              whileHover={{ 
+                y: -4, 
+                scale: 1.05,
+                boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
+              }}
+              whileTap={{ scale: 0.95 }}
               className="final-cta-button"
               style={{
                 background: "white",
@@ -127,15 +133,9 @@ export default function FinalCTA({ onEnrollClick }) {
                 fontFamily: "'Inter', sans-serif",
                 transition: "all 0.3s ease"
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px) scale(1.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0) scale(1)";
-              }}
             >
               Start Building Now
-            </button>
+            </motion.button>
             <div style={{ marginTop: "24px", color: "rgba(255,255,255,0.6)", fontSize: "14px" }}>
               Next cohort begins soon. Limited spots available.
             </div>

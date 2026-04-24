@@ -197,7 +197,11 @@ export default function Hero({ onEnrollClick }) {
         >
           <motion.button
             onClick={onEnrollClick}
-            whileHover={{ scale: 1.02, y: -2 }}
+            whileHover={{ 
+              scale: 1.02, 
+              y: -2,
+              boxShadow: "0 15px 40px rgba(0,0,0,0.25)"
+            }}
             whileTap={{ scale: 0.98 }}
             className="hero-btn-primary"
             style={{
@@ -211,12 +215,6 @@ export default function Hero({ onEnrollClick }) {
               transition: "box-shadow 0.3s ease",
               fontFamily: "'Inter', sans-serif",
               letterSpacing: "0.2px",
-            }}
-            onHoverStart={(e) => {
-              e.currentTarget.style.boxShadow = "0 15px 40px rgba(0,0,0,0.25)";
-            }}
-            onHoverEnd={(e) => {
-              e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.15)";
             }}
           >
             Begin the Program

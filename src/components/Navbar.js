@@ -92,9 +92,14 @@ export default function Navbar({ onEnrollClick }) {
           className="nav-links-desktop"
         >
           {links.map((link) => (
-            <a
-              key={link.label}
+            <motion.a
+              key={link.href}
               href={link.href}
+              whileHover={{ 
+                color: "#4F46E5",
+                background: "#f0f0ff" 
+              }}
+              className="navbar-link"
               style={{
                 padding: "8px 16px",
                 fontSize: "14px",
@@ -104,21 +109,18 @@ export default function Navbar({ onEnrollClick }) {
                 borderRadius: "8px",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => {
-                e.target.style.color = "#4F46E5";
-                e.target.style.background = "#f0f0ff";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = "#374151";
-                e.target.style.background = "transparent";
-              }}
             >
               {link.label}
-            </a>
+            </motion.a>
           ))}
-          <button
+          <motion.button
             id="navbar-enroll-btn"
             onClick={onEnrollClick}
+            whileHover={{ 
+              y: -1,
+              boxShadow: "0 6px 20px rgba(79,70,229,0.45)"
+            }}
+            whileTap={{ scale: 0.98 }}
             style={{
               marginLeft: "8px",
               padding: "10px 22px",
@@ -133,17 +135,9 @@ export default function Navbar({ onEnrollClick }) {
               transition: "all 0.3s",
               fontFamily: "'Inter', sans-serif",
             }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = "translateY(-1px)";
-              e.target.style.boxShadow = "0 6px 20px rgba(79,70,229,0.45)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = "translateY(0)";
-              e.target.style.boxShadow = "0 4px 14px rgba(79,70,229,0.35)";
-            }}
           >
             Enroll Now
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Hamburger */}
