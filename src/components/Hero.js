@@ -326,7 +326,7 @@ export default function Hero({ onEnrollClick }) {
         .hero-buttons { gap: 24px; }
         .hero-btn-primary, .hero-btn-secondary { padding: 20px 48px; fontSize: 16px; }
         .hero-stats {
-          margin-top: 120px;
+          margin-top: 40px;
           border-radius: 40px;
           padding: 48px 80px;
           gap: 100px;
