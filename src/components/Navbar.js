@@ -15,6 +15,7 @@ export default function Navbar({ onEnrollClick }) {
   const links = [
     { label: "Features", href: "#features" },
     { label: "Curriculum", href: "#curriculum" },
+    { label: "AI Workshop", href: "/workshop" },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -47,7 +48,7 @@ export default function Navbar({ onEnrollClick }) {
       >
         {/* Logo */}
         <a
-          href="#"
+          href="/"
           style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}
         >
           <div

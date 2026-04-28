@@ -236,25 +236,33 @@ export default function Hero({ onEnrollClick }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            background: "rgba(255, 255, 255, 0.7)",
+            background: "rgba(255, 255, 255, 0.8)",
             backdropFilter: "blur(20px)",
             border: "1px solid rgba(0,0,0,0.06)",
             display: "flex",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.04)",
+            boxShadow: "0 30px 60px rgba(0,0,0,0.05)",
             flexWrap: "wrap",
-            justifyContent: "center"
+            justifyContent: "center",
+            borderRadius: "40px",
+            padding: "48px 80px",
+            gap: "100px",
+            marginTop: "64px"
           }}
           className="hero-stats"
         >
           {[
-             { label: "CONTACT HOURS", value: 20, suffix: "+" },
+             { label: "HOURS", value: 20, suffix: "+" },
              { label: "MODULES", value: 9, suffix: "" },
-             { label: "PLACEMENT RATE", value: 94, suffix: "%" }
+             { label: "INVESTMENT", value: 25000, suffix: "" }
           ].map((stat, i) => (
-            <div key={i} className="stat-card" style={{ textAlign: "left" }}>
+            <div key={i} className="stat-card" style={{ textAlign: "center", minWidth: "150px" }}>
               <div className="stat-label" style={{ 
                 fontWeight: 600, 
                 color: "#64748b", 
+                fontSize: "13px",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                marginBottom: "12px"
               }}>
                 {stat.label}
               </div>
@@ -262,7 +270,9 @@ export default function Hero({ onEnrollClick }) {
                 fontWeight: 800, 
                 fontFamily: "'Inter', sans-serif",
                 color: "#0a0a0a",
-                lineHeight: 1
+                lineHeight: 1,
+                fontSize: "56px",
+                letterSpacing: "-2px"
               }}>
                 <Counter value={stat.value} animate={statsVisible} />
                 <span style={{ color: "#4F46E5" }}>{stat.suffix}</span>

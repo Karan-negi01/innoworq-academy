@@ -65,10 +65,12 @@ function InputField({ label, id, type = "text", placeholder, value, onChange, re
   );
 }
 
-export default function ContactModal({ isOpen, onClose }) {
+export default function ContactModal({ isOpen, onClose, type = null, onSuccess }) {
+  const [enrollType, setEnrollType] = useState(type || "course");
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   // Lock body scroll when open
   useEffect(() => {
@@ -80,15 +82,38 @@ export default function ContactModal({ isOpen, onClose }) {
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (type) setEnrollType(type);
+  }, [type]);
+
   const handleChange = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1200));
-    setSubmitting(false);
-    setSubmitted(true);
+    setError("");
+    
+    try {
+      const response = await fetch("/api/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, enrollType }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        if (onSuccess) onSuccess();
+      } else {
+        setError(result.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setError("Network error. Please check your connection.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -190,23 +215,23 @@ export default function ContactModal({ isOpen, onClose }) {
                   </svg>
                 </button>
 
-                <div style={{ fontSize: "28px", marginBottom: "10px" }}>🎓</div>
                 <h2
                   style={{
-                    fontSize: "22px",
+                    fontSize: "24px",
                     fontWeight: 800,
                     fontFamily: "'Poppins', sans-serif",
                     color: "white",
-                    letterSpacing: "-0.3px",
-                    marginBottom: "6px",
+                    letterSpacing: "-0.5px",
+                    marginBottom: "8px",
+                    textAlign: "center"
                   }}
                 >
-                  {submitted ? "You're All Set! 🎉" : "Enroll in Innoworq Academy"}
+                  {submitted ? "Enrollment Successful! 🎉" : `Secure Your Spot`}
                 </h2>
-                <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>
+                <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: 1.5, textAlign: "center", maxWidth: "300px", margin: "0 auto" }}>
                   {submitted
-                    ? "Our team will contact you shortly."
-                    : "Fill in your details and our team will reach out to you promptly."}
+                    ? "Check your WhatsApp for confirmation."
+                    : `Complete your application for the ${enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}.`}
                 </p>
               </div>
 
@@ -249,37 +274,124 @@ export default function ContactModal({ isOpen, onClose }) {
                         Thank You, {form.name || "there"}!
                       </h3>
                       <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.7, marginBottom: "28px" }}>
-                        Your enquiry has been submitted. Our team will contact you shortly at{" "}
-                        <strong style={{ color: "#4F46E5" }}>{form.email}</strong>.
+                        Your enquiry for the <strong style={{ color: "#4F46E5" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> has been submitted.
                       </p>
+                      
+                      {enrollType === 'workshop' && (
+                        <motion.a
+                          href="https://wa.me/919211633068?text=Hi, I just enrolled for the Sunday AI Workshop. Please share the Zoom link."
+                          target="_blank"
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          style={{
+                            display: "block",
+                            width: "100%",
+                            padding: "16px",
+                            background: "#25D366",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "12px",
+                            fontSize: "16px",
+                            fontWeight: 700,
+                            textDecoration: "none",
+                            marginBottom: "16px",
+                            boxShadow: "0 6px 20px rgba(37,211,102,0.3)",
+                          }}
+                        >
+                          Join Workshop WhatsApp Group
+                        </motion.a>
+                      )}
+
                       <motion.button
                         onClick={handleClose}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         style={{
-                          padding: "14px 36px",
-                          background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
-                          color: "white",
+                          width: "100%",
+                          padding: "14px",
+                          background: "#f1f5f9",
+                          color: "#475569",
                           border: "none",
                           borderRadius: "12px",
                           fontSize: "15px",
                           fontWeight: 600,
                           cursor: "pointer",
-                          fontFamily: "'Poppins', sans-serif",
-                          boxShadow: "0 6px 20px rgba(79,70,229,0.3)",
                         }}
                       >
                         Close
                       </motion.button>
                     </motion.div>
                   ) : (
-                    <motion.form
+                    <>
+                      {error && (
+                        <div style={{ padding: "12px", background: "#fef2f2", border: "1px solid #fee2e2", borderRadius: "12px", color: "#ef4444", fontSize: "13px", marginBottom: "20px", textAlign: "center" }}>
+                          {error}
+                        </div>
+                      )}
+                      <motion.form
                       key="form"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onSubmit={handleSubmit}
                     >
+                      <div style={{ marginBottom: "32px" }}>
+                        <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#1e293b", marginBottom: "16px", textAlign: "center" }}>
+                          Select Your Program
+                        </label>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                          <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.02, borderColor: "#4F46E5" }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => setEnrollType("course")}
+                            style={{
+                              padding: "20px 12px",
+                              borderRadius: "20px",
+                              border: `2px solid ${enrollType === 'course' ? '#4F46E5' : '#f1f5f9'}`,
+                              background: enrollType === 'course' ? '#f5f3ff' : '#f8fafc',
+                              color: enrollType === 'course' ? '#4F46E5' : '#64748b',
+                              fontWeight: 700,
+                              fontSize: "14px",
+                              cursor: "pointer",
+                              transition: "all 0.3s",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              gap: "8px",
+                              boxShadow: enrollType === 'course' ? '0 10px 20px rgba(79,70,229,0.1)' : 'none'
+                            }}
+                          >
+                            <span style={{ fontSize: "28px" }}>🎓</span>
+                            <div style={{ lineHeight: 1.2 }}>Certification<br/><span style={{ fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>Full Program</span></div>
+                          </motion.button>
+                          <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setEnrollType("workshop")}
+                            style={{
+                              padding: "20px 12px",
+                              borderRadius: "20px",
+                              border: `2px solid ${enrollType === 'workshop' ? '#4F46E5' : '#f1f5f9'}`,
+                              background: enrollType === 'workshop' ? '#f5f3ff' : '#f8fafc',
+                              color: enrollType === 'workshop' ? '#4F46E5' : '#64748b',
+                              fontWeight: 700,
+                              fontSize: "14px",
+                              cursor: "pointer",
+                              transition: "all 0.3s",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              gap: "8px",
+                              boxShadow: enrollType === 'workshop' ? '0 10px 20px rgba(79,70,229,0.1)' : 'none'
+                            }}
+                          >
+                            <span style={{ fontSize: "28px" }}>⚡</span>
+                            <div style={{ lineHeight: 1.2 }}>AI Workshop<br/><span style={{ fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>3h Intense</span></div>
+                          </motion.button>
+                        </div>
+                      </div>
                       <InputField
                         label="Full Name"
                         id="contact-name"
@@ -362,6 +474,7 @@ export default function ContactModal({ isOpen, onClose }) {
                         )}
                       </motion.button>
                     </motion.form>
+                    </>
                   )}
                 </AnimatePresence>
               </div>
