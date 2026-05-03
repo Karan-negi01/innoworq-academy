@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "#0a0a0a",
+        background: "#000000",
         color: "white",
         padding: "72px 0 32px",
       }}
@@ -34,34 +34,29 @@ export default function Footer() {
                 marginBottom: "20px",
               }}
             >
-              <div
+              <img
+                src="/final.png"
+                alt="Innoworq Academy Logo"
                 style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "10px",
-                  background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 12px rgba(79,70,229,0.4)",
+                  width: "70px",
+                  height: "70px",
+                  borderRadius: "12px",
+                  objectFit: "contain",
+
                 }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" fill="white" opacity="0.9" />
-                  <path d="M2 17l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
+              />
               <span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                   fontWeight: 700,
                   fontSize: "17px",
                   color: "white",
+                  marginTop: "10px",
+                  marginLeft: "-15px",
                   letterSpacing: "-0.3px",
                 }}
               >
-                Innoworq <span style={{ color: "#818cf8" }}>Academy</span>
+                Innoworq <span style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Academy</span>
               </span>
             </a>
 

@@ -53,11 +53,11 @@ function IndustryCard({ item, index }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -6 }}
       style={{
-        background: "white",
+        background: "rgba(255,255,255,0.04)",
         borderRadius: "20px",
         padding: "32px 28px",
-        border: "1px solid #f1f5f9",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+        border: "1px solid rgba(255,255,255,0.07)",
+        boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
         transition: "box-shadow 0.3s ease, border-color 0.3s ease",
         cursor: "default",
       }}
@@ -84,7 +84,7 @@ function IndustryCard({ item, index }) {
           fontSize: "18px",
           fontWeight: 700,
           fontFamily: "'Poppins', sans-serif",
-          color: "#0a0a0a",
+          color: "#ffffff",
           marginBottom: "16px",
           letterSpacing: "-0.2px",
         }}
@@ -101,7 +101,7 @@ function IndustryCard({ item, index }) {
               alignItems: "center",
               gap: "8px",
               fontSize: "13px",
-              color: "#475569",
+              color: "rgba(255,255,255,0.5)",
               fontWeight: 500,
             }}
           >
@@ -128,7 +128,7 @@ export default function CareerOpportunities() {
       id="careers"
       style={{
         padding: "100px 0",
-        background: "white",
+        background: "#000000",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
@@ -144,12 +144,14 @@ export default function CareerOpportunities() {
             style={{
               display: "inline-block",
               padding: "6px 16px",
-              background: "rgba(79,70,229,0.08)",
-              border: "1px solid rgba(79,70,229,0.2)",
+              background: "rgba(255,140,0,0.12)",
+              border: "1px solid rgba(255,140,0,0.2)",
               borderRadius: "100px",
               fontSize: "13px",
               fontWeight: 600,
-              color: "#4F46E5",
+              background: "linear-gradient(135deg, #FF8C00, #E8291C)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               marginBottom: "16px",
             }}
           >
@@ -160,7 +162,7 @@ export default function CareerOpportunities() {
               fontSize: "clamp(32px, 4vw, 48px)",
               fontWeight: 800,
               fontFamily: "'Poppins', sans-serif",
-              color: "#0a0a0a",
+              color: "#ffffff",
               letterSpacing: "-1px",
               lineHeight: 1.15,
               marginBottom: "16px",
@@ -169,7 +171,7 @@ export default function CareerOpportunities() {
             Land Jobs In{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -180,7 +182,7 @@ export default function CareerOpportunities() {
           <p
             style={{
               fontSize: "17px",
-              color: "#64748b",
+              color: "rgba(255,255,255,0.5)",
               maxWidth: "500px",
               margin: "0 auto",
               lineHeight: 1.7,

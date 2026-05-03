@@ -33,7 +33,7 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       style={{
-        borderBottom: "1px solid rgba(0,0,0,0.08)",
+        borderBottom: "1px solid rgba(255,255,255,0.07)",
         overflow: "hidden"
       }}
     >
@@ -54,7 +54,7 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
         <h3 className="faq-question" style={{
           fontWeight: 600,
           fontFamily: "'Inter', sans-serif",
-          color: isOpen ? "#4F46E5" : "#0a0a0a",
+          color: isOpen ? "#FF8C00" : "rgba(255,255,255,0.85)",
           letterSpacing: "-0.3px",
           transition: "color 0.3s ease",
           paddingRight: "16px"
@@ -71,8 +71,8 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
             justifyContent: "center",
             flexShrink: 0,
             borderRadius: "50%",
-            background: isOpen ? "rgba(79,70,229,0.1)" : "#f1f5f9",
-            color: isOpen ? "#4F46E5" : "#64748b"
+            background: isOpen ? "rgba(255,140,0,0.12)" : "rgba(255,255,255,0.07)",
+            color: isOpen ? "#FF8C00" : "rgba(255,255,255,0.4)"
           }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -90,7 +90,7 @@ function FAQItem({ faq, index, isOpen, toggleOpen }) {
             transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.4 }}
           >
             <p className="faq-answer" style={{
-              color: "#475569",
+              color: "rgba(255,255,255,0.55)",
               lineHeight: 1.6
             }}>
               {faq.answer}
@@ -108,7 +108,7 @@ export default function FAQ() {
   const inView = useInView(targetRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="faq" className="faq-section" style={{ background: "white" }}>
+    <section id="faq" className="faq-section" style={{ background: "#000000" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }} ref={targetRef}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -116,21 +116,21 @@ export default function FAQ() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="faq-header"
         >
-          <span style={{ fontSize: "14px", fontWeight: 700, color: "#4F46E5", textTransform: "uppercase", letterSpacing: "1px" }}>
+          <span style={{ fontSize: "14px", fontWeight: 700, background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", textTransform: "uppercase", letterSpacing: "1px" }}>
             FAQ
           </span>
           <h2 className="faq-title" style={{
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
-            color: "#0a0a0a",
+            color: "#ffffff",
             letterSpacing: "-0.04em",
             marginTop: "16px"
           }}>
-            Questions? <span style={{ color: "#94a3b8" }}>Answers.</span>
+            Questions? <span style={{ color: "rgba(255,255,255,0.25)" }}>Answers.</span>
           </h2>
         </motion.div>
 
-        <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+        <div style={{ borderTop: "1px solid #1a1a1a" }}>
           {faqs.map((faq, index) => (
             <FAQItem 
               key={index} 

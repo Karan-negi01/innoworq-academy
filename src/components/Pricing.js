@@ -21,7 +21,7 @@ export default function Pricing({ onEnrollClick }) {
       id="pricing"
       className="pricing-section"
       style={{
-        background: "#050505", // Deep premium black
+        background: "#000000",
         position: "relative",
         overflow: "hidden"
       }}
@@ -34,7 +34,7 @@ export default function Pricing({ onEnrollClick }) {
         transform: "translate(-50%, -50%)",
         width: "800px",
         height: "800px",
-        background: "radial-gradient(circle, rgba(79,70,229,0.1) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(255,140,0,0.08) 0%, transparent 70%)",
         pointerEvents: "none",
         zIndex: 0
       }} />
@@ -58,7 +58,7 @@ export default function Pricing({ onEnrollClick }) {
           }}>
             An investment in your
             <br />
-            <span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "'Poppins', sans-serif", color: "#a5b4fc" }}>
+            <span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "'Poppins', sans-serif", background: "linear-gradient(135deg, #FF8C00, #4D7FFF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               future leverage.
             </span>
           </h2>
@@ -104,13 +104,13 @@ export default function Pricing({ onEnrollClick }) {
                     width: "20px", 
                     height: "20px", 
                     borderRadius: "50%", 
-                    background: "rgba(79,70,229,0.2)", 
+                    background: "rgba(255,140,0,0.12)", 
                     display: "flex", 
                     alignItems: "center", 
                     justifyContent: "center",
                     flexShrink: 0
                   }}>
-                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#818cf8" }} />
+                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "linear-gradient(135deg, #FF8C00, #E8291C)" }} />
                   </div>
                   <span style={{ fontSize: "15px", color: "#cbd5e1" }}>{feature}</span>
                 </div>
@@ -121,14 +121,14 @@ export default function Pricing({ onEnrollClick }) {
           {/* Right Side - Price & CTA */}
           <div className="pricing-right" style={{ 
             flex: "1 1 300px", 
-            background: "linear-gradient(135deg, rgba(79,70,229,0.05), rgba(0,0,0,0))",
+            background: "linear-gradient(135deg, rgba(255,140,0,0.06), rgba(0,0,0,0))",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center"
           }}>
-            <div style={{ fontSize: "14px", fontWeight: 600, color: "#818cf8", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "16px" }}>
+            <div style={{ fontSize: "14px", fontWeight: 600, background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "16px" }}>
               One-Time Payment
             </div>
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", gap: "4px", marginBottom: "8px" }}>

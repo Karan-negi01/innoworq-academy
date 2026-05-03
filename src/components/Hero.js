@@ -76,12 +76,11 @@ export default function Hero({ onEnrollClick }) {
           }}
           src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technological-world-with-blue-and-white-lights-22757-large.mp4"
         />
-        {/* Gradient Overlay for better text readability */}
+        {/* Dark overlay to mute the video on black bg */}
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(circle at center, transparent 0%, white 100%)",
-          opacity: 0.3
+          background: "rgba(0,0,0,0.65)",
         }} />
       </div>
 
@@ -109,16 +108,16 @@ export default function Hero({ onEnrollClick }) {
             alignItems: "center",
             gap: "10px",
             padding: "8px 20px",
-            background: "rgba(255,255,255,0.8)",
-            backdropFilter: "blur(10px)",
-            border: "1px solid #e2e8f0",
+            background: "rgba(255,255,255,0.06)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,140,0,0.25)",
             borderRadius: "100px",
             marginBottom: "40px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
+            boxShadow: "0 4px 20px rgba(0,0,0,0.3)"
           }}
         >
           <div style={{ width: "8px", height: "8px", background: "#10b981", borderRadius: "50%", boxShadow: "0 0 10px #10b981" }} />
-          <span style={{ fontSize: "12px", fontWeight: 700, color: "#1e293b", textTransform: "uppercase", letterSpacing: "1px" }}>
+          <span style={{ fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.9)", textTransform: "uppercase", letterSpacing: "1px" }}>
             Enrollment Open • Cohort 04
           </span>
         </motion.div>
@@ -133,7 +132,7 @@ export default function Hero({ onEnrollClick }) {
             fontSize: "clamp(48px, 7vw, 115px)", // Slightly reduced for balance
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
-            color: "#0a0a0a",
+            color: "#ffffff",
             lineHeight: 0.95,
             letterSpacing: "-0.04em",
             marginBottom: "32px",
@@ -148,7 +147,9 @@ export default function Hero({ onEnrollClick }) {
               fontWeight: 400,
               fontFamily: "'Poppins', sans-serif",
               letterSpacing: "-0.02em",
-              color: "#4F46E5",
+              background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               position: "relative",
               display: "inline-block"
             }}
@@ -164,7 +165,7 @@ export default function Hero({ onEnrollClick }) {
           transition={{ duration: 1, delay: 0.3 }}
           className="hero-subheadline"
           style={{
-            color: "#475569",
+            color: "rgba(255,255,255,0.65)",
             fontSize: "clamp(17px, 1.1vw, 21px)", // Refined subheadline
             lineHeight: 1.6,
             marginBottom: "48px",
@@ -193,13 +194,13 @@ export default function Hero({ onEnrollClick }) {
             whileTap={{ scale: 0.98 }}
             className="hero-btn-primary"
             style={{
-              background: "#0a0a0a",
+              background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
               color: "white",
-              border: "1px solid #000",
+              border: "none",
               borderRadius: "100px",
               fontWeight: 600,
               cursor: "pointer",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+              boxShadow: "0 10px 30px rgba(232,41,28,0.4)",
               transition: "box-shadow 0.3s ease",
               fontFamily: "'Inter', sans-serif",
               letterSpacing: "0.2px",
@@ -214,9 +215,9 @@ export default function Hero({ onEnrollClick }) {
             whileTap={{ scale: 0.98 }}
             className="hero-btn-secondary"
             style={{
-              background: "white",
-              color: "#0a0a0a",
-              border: "1px solid #e2e8f0",
+              background: "rgba(255,255,255,0.07)",
+              color: "rgba(255,255,255,0.9)",
+              border: "1px solid rgba(255,255,255,0.15)",
               borderRadius: "100px",
               fontWeight: 600,
               cursor: "pointer",
@@ -236,11 +237,11 @@ export default function Hero({ onEnrollClick }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            background: "rgba(255, 255, 255, 0.8)",
+            background: "rgba(255,255,255,0.04)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(0,0,0,0.06)",
+            border: "1px solid rgba(255,140,0,0.18)",
             display: "flex",
-            boxShadow: "0 30px 60px rgba(0,0,0,0.05)",
+            boxShadow: "0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)",
             flexWrap: "wrap",
             justifyContent: "center",
             borderRadius: "40px",
@@ -258,7 +259,7 @@ export default function Hero({ onEnrollClick }) {
             <div key={i} className="stat-card" style={{ textAlign: "center", minWidth: "150px" }}>
               <div className="stat-label" style={{ 
                 fontWeight: 600, 
-                color: "#64748b", 
+                color: "rgba(255,255,255,0.45)", 
                 fontSize: "13px",
                 letterSpacing: "2px",
                 textTransform: "uppercase",
@@ -269,13 +270,13 @@ export default function Hero({ onEnrollClick }) {
               <div className="stat-value" style={{ 
                 fontWeight: 800, 
                 fontFamily: "'Inter', sans-serif",
-                color: "#0a0a0a",
+                color: "#ffffff",
                 lineHeight: 1,
                 fontSize: "56px",
                 letterSpacing: "-2px"
               }}>
                 <Counter value={stat.value} animate={statsVisible} />
-                <span style={{ color: "#4F46E5" }}>{stat.suffix}</span>
+                <span style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{stat.suffix}</span>
               </div>
             </div>
           ))}
@@ -286,7 +287,7 @@ export default function Hero({ onEnrollClick }) {
       <div 
         className="hero-ticker"
         style={{
-          background: "#0a0a0a",
+          background: "#000000",
           padding: "20px 0", 
           width: "100%",
           overflow: "hidden",

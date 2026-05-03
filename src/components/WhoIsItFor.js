@@ -28,12 +28,12 @@ function AudienceCard({ item, index }) {
         boxShadow: "0 16px 40px rgba(79,70,229,0.12)"
       }}
       style={{
-        background: "white",
+        background: "rgba(255,255,255,0.04)",
         borderRadius: "20px",
         padding: "32px 24px",
         textAlign: "center",
-        border: "1px solid #f1f5f9",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+        border: "1px solid rgba(255,255,255,0.07)",
+        boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
         cursor: "default",
         transition: "box-shadow 0.3s ease, border-color 0.3s ease",
       }}
@@ -52,7 +52,7 @@ function AudienceCard({ item, index }) {
           fontSize: "16px",
           fontWeight: 700,
           fontFamily: "'Poppins', sans-serif",
-          color: "#0a0a0a",
+          color: "#ffffff",
           marginBottom: "8px",
           letterSpacing: "-0.2px",
         }}
@@ -62,7 +62,7 @@ function AudienceCard({ item, index }) {
       <p
         style={{
           fontSize: "13px",
-          color: "#64748b",
+          color: "rgba(255,255,255,0.4)",
           lineHeight: 1.5,
         }}
       >
@@ -80,8 +80,8 @@ export default function WhoIsItFor() {
     <section
       id="audience"
       style={{
-        padding: "100px 0",
-        background: "white",
+      padding: "100px 0",
+        background: "#000000",
       }}
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
@@ -97,12 +97,14 @@ export default function WhoIsItFor() {
             style={{
               display: "inline-block",
               padding: "6px 16px",
-              background: "rgba(79,70,229,0.08)",
-              border: "1px solid rgba(79,70,229,0.2)",
+              background: "rgba(255,140,0,0.12)",
+              border: "1px solid rgba(255,140,0,0.2)",
               borderRadius: "100px",
               fontSize: "13px",
               fontWeight: 600,
-              color: "#4F46E5",
+              background: "linear-gradient(135deg, #FF8C00, #E8291C)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               marginBottom: "16px",
             }}
           >
@@ -113,7 +115,7 @@ export default function WhoIsItFor() {
               fontSize: "clamp(32px, 4vw, 48px)",
               fontWeight: 800,
               fontFamily: "'Poppins', sans-serif",
-              color: "#0a0a0a",
+              color: "#ffffff",
               letterSpacing: "-1px",
               lineHeight: 1.15,
               marginBottom: "16px",
@@ -122,7 +124,7 @@ export default function WhoIsItFor() {
             Who Is{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -133,7 +135,7 @@ export default function WhoIsItFor() {
           <p
             style={{
               fontSize: "17px",
-              color: "#64748b",
+              color: "rgba(255,255,255,0.55)",
               maxWidth: "560px",
               margin: "0 auto",
               lineHeight: 1.7,
@@ -166,21 +168,21 @@ export default function WhoIsItFor() {
           style={{
             textAlign: "center",
             padding: "28px 40px",
-            background: "linear-gradient(135deg, rgba(79,70,229,0.06), rgba(124,58,237,0.06))",
+            background: "linear-gradient(135deg, rgba(255,140,0,0.08), rgba(232,41,28,0.06))",
             borderRadius: "20px",
-            border: "1px solid rgba(79,70,229,0.12)",
+            border: "1px solid rgba(255,140,0,0.15)",
           }}
         >
           <p
             style={{
               fontSize: "17px",
-              color: "#374151",
+              color: "rgba(255,255,255,0.8)",
               lineHeight: 1.6,
               fontWeight: 500,
             }}
           >
             🎯 No prior AI knowledge required.{" "}
-            <strong style={{ color: "#4F46E5" }}>Basic computer literacy</strong> is all you need to get started. We handle the rest.
+            <strong style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Basic computer literacy</strong> is all you need to get started. We handle the rest.
           </p>
         </motion.div>
       </div>

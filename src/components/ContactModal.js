@@ -9,14 +9,14 @@ function InputField({ label, id, type = "text", placeholder, value, onChange, re
     width: "100%",
     padding: "14px 16px",
     fontSize: "15px",
-    border: `1.5px solid ${focused ? "#4F46E5" : "#e2e8f0"}`,
+    border: `1.5px solid ${focused ? "#FF8C00" : "rgba(255,255,255,0.1)"}`,
     borderRadius: "12px",
     outline: "none",
     fontFamily: "'Inter', sans-serif",
-    color: "#0a0a0a",
-    background: "white",
+    color: "#ffffff",
+    background: "rgba(255,255,255,0.06)",
     transition: "border-color 0.2s ease, box-shadow 0.2s ease",
-    boxShadow: focused ? "0 0 0 3px rgba(79,70,229,0.1)" : "none",
+    boxShadow: focused ? "0 0 0 3px rgba(255,140,0,0.15)" : "none",
     resize: textarea ? "vertical" : "none",
     minHeight: textarea ? "100px" : "auto",
   };
@@ -29,7 +29,7 @@ function InputField({ label, id, type = "text", placeholder, value, onChange, re
           display: "block",
           fontSize: "13px",
           fontWeight: 600,
-          color: "#374151",
+          color: "rgba(255,255,255,0.7)",
           marginBottom: "8px",
           letterSpacing: "0.1px",
         }}
@@ -174,16 +174,17 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
             >
             <div
               style={{
-                background: "white",
+                background: "rgba(10,10,15,0.97)",
                 borderRadius: "24px",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.2), 0 10px 30px rgba(79,70,229,0.1)",
+                boxShadow: "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,140,0,0.15)",
                 overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.08)"
               }}
             >
               {/* Header */}
               <div
                 style={{
-                  background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                  background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
                   padding: "32px 36px",
                   position: "relative",
                 }}
@@ -252,7 +253,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                           width: "72px",
                           height: "72px",
                           borderRadius: "50%",
-                          background: "linear-gradient(135deg, rgba(79,70,229,0.1), rgba(124,58,237,0.1))",
+                          background: "linear-gradient(135deg, rgba(255,140,0,0.1), rgba(232,41,28,0.1))",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -267,14 +268,14 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                           fontSize: "20px",
                           fontWeight: 700,
                           fontFamily: "'Poppins', sans-serif",
-                          color: "#0a0a0a",
+                          color: "#ffffff",
                           marginBottom: "12px",
                         }}
                       >
                         Thank You, {form.name || "there"}!
                       </h3>
-                      <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.7, marginBottom: "28px" }}>
-                        Your enquiry for the <strong style={{ color: "#4F46E5" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> has been submitted.
+                      <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "28px" }}>
+                        Your enquiry for the <strong style={{ color: "#FF8C00" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> has been submitted.
                       </p>
                       
                       {enrollType === 'workshop' && (
@@ -309,9 +310,9 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                         style={{
                           width: "100%",
                           padding: "14px",
-                          background: "#f1f5f9",
-                          color: "#475569",
-                          border: "none",
+                          background: "rgba(255,255,255,0.06)",
+                          color: "rgba(255,255,255,0.6)",
+                          border: "1px solid rgba(255,255,255,0.1)",
                           borderRadius: "12px",
                           fontSize: "15px",
                           fontWeight: 600,
@@ -336,7 +337,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                       onSubmit={handleSubmit}
                     >
                       <div style={{ marginBottom: "32px" }}>
-                        <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#1e293b", marginBottom: "16px", textAlign: "center" }}>
+                        <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "rgba(255,255,255,0.9)", marginBottom: "16px", textAlign: "center" }}>
                           Select Your Program
                         </label>
                         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
@@ -348,9 +349,9 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                             style={{
                               padding: "20px 12px",
                               borderRadius: "20px",
-                              border: `2px solid ${enrollType === 'course' ? '#4F46E5' : '#f1f5f9'}`,
-                              background: enrollType === 'course' ? '#f5f3ff' : '#f8fafc',
-                              color: enrollType === 'course' ? '#4F46E5' : '#64748b',
+                              border: `2px solid ${enrollType === 'course' ? '#FF8C00' : 'rgba(255,255,255,0.08)'}`,
+                              background: enrollType === 'course' ? 'rgba(255,140,0,0.1)' : 'rgba(255,255,255,0.04)',
+                              color: enrollType === 'course' ? '#FF8C00' : 'rgba(255,255,255,0.5)',
                               fontWeight: 700,
                               fontSize: "14px",
                               cursor: "pointer",
@@ -359,7 +360,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                               flexDirection: "column",
                               alignItems: "center",
                               gap: "8px",
-                              boxShadow: enrollType === 'course' ? '0 10px 20px rgba(79,70,229,0.1)' : 'none'
+                              boxShadow: enrollType === 'course' ? '0 10px 20px rgba(255,140,0,0.15)' : 'none'
                             }}
                           >
                             <span style={{ fontSize: "28px" }}>🎓</span>
@@ -373,9 +374,9 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                             style={{
                               padding: "20px 12px",
                               borderRadius: "20px",
-                              border: `2px solid ${enrollType === 'workshop' ? '#4F46E5' : '#f1f5f9'}`,
-                              background: enrollType === 'workshop' ? '#f5f3ff' : '#f8fafc',
-                              color: enrollType === 'workshop' ? '#4F46E5' : '#64748b',
+                              border: `2px solid ${enrollType === 'workshop' ? '#FF8C00' : 'rgba(255,255,255,0.08)'}`,
+                              background: enrollType === 'workshop' ? 'rgba(255,140,0,0.1)' : 'rgba(255,255,255,0.04)',
+                              color: enrollType === 'workshop' ? '#FF8C00' : 'rgba(255,255,255,0.5)',
                               fontWeight: 700,
                               fontSize: "14px",
                               cursor: "pointer",
@@ -384,7 +385,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                               flexDirection: "column",
                               alignItems: "center",
                               gap: "8px",
-                              boxShadow: enrollType === 'workshop' ? '0 10px 20px rgba(79,70,229,0.1)' : 'none'
+                              boxShadow: enrollType === 'workshop' ? '0 10px 20px rgba(255,140,0,0.15)' : 'none'
                             }}
                           >
                             <span style={{ fontSize: "28px" }}>⚡</span>
@@ -437,16 +438,16 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                           width: "100%",
                           padding: "16px",
                           background: submitting
-                            ? "#e2e8f0"
-                            : "linear-gradient(135deg, #4F46E5, #7C3AED)",
-                          color: submitting ? "#94a3b8" : "white",
+                            ? "rgba(255,255,255,0.08)"
+                            : "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
+                          color: submitting ? "rgba(255,255,255,0.3)" : "white",
                           border: "none",
                           borderRadius: "12px",
                           fontSize: "16px",
                           fontWeight: 700,
                           cursor: submitting ? "not-allowed" : "pointer",
                           fontFamily: "'Poppins', sans-serif",
-                          boxShadow: submitting ? "none" : "0 6px 20px rgba(79,70,229,0.3)",
+                          boxShadow: submitting ? "none" : "0 6px 20px rgba(232,41,28,0.3)",
                           transition: "all 0.3s ease",
                           display: "flex",
                           alignItems: "center",

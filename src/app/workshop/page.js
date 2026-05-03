@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import WorkshopHero from "@/components/WorkshopHero";
 import WorkshopTopics from "@/components/WorkshopTopics";
+import WorkshopSchedule from "@/components/WorkshopSchedule";
+import WorkshopWhoIsItFor from "@/components/WorkshopWhoIsItFor";
+import WorkshopPricing from "@/components/WorkshopPricing";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
@@ -11,7 +14,6 @@ export default function WorkshopPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [seatsLeft, setSeatsLeft] = useState(100);
 
-  // Mock seat update - in a real app, this would fetch from /api/seats
   useEffect(() => {
     const fetchSeats = async () => {
       try {
@@ -31,21 +33,33 @@ export default function WorkshopPage() {
   return (
     <main style={{ background: "#000" }}>
       <Navbar onEnrollClick={openModal} />
-      
+
+      {/* Hero */}
       <WorkshopHero onEnrollClick={openModal} seatsLeft={seatsLeft} />
-      
+
+      {/* What you'll learn — 3 topics */}
       <WorkshopTopics />
-      
-      <div style={{ background: "#0a0a0a", padding: "100px 24px" }}>
+
+      {/* Hour-by-hour schedule */}
+      <WorkshopSchedule />
+
+      {/* Who is this for */}
+      <WorkshopWhoIsItFor onEnrollClick={openModal} />
+
+      {/* Pricing */}
+      <WorkshopPricing onEnrollClick={openModal} seatsLeft={seatsLeft} />
+
+      {/* FAQ */}
+      <div style={{ background: "#000000", padding: "100px 24px" }}>
         <FAQ />
       </div>
 
       <Footer />
 
-      <ContactModal 
-        isOpen={modalOpen} 
-        onClose={closeModal} 
-        type="workshop" 
+      <ContactModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        type="workshop"
         onSuccess={() => {
           const newSeats = Math.max(0, seatsLeft - 1);
           setSeatsLeft(newSeats);

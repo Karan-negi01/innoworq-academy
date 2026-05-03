@@ -1,182 +1,282 @@
 "use client";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 export default function WorkshopHero({ onEnrollClick, seatsLeft }) {
   return (
-    <section className="workshop-hero" style={{
-      position: "relative",
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      overflow: "hidden",
-      padding: "120px 24px 80px",
-      background: "#000"
-    }}>
-      {/* Background with Generated Image Overlay */}
-      <div style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 0,
-        opacity: 0.5
-      }}>
-        {/* We'll use a placeholder or the generated image path if we can access it relative to public. 
-            Since I generated it in the brain directory, I should ideally move it to public or use a high-end CSS gradient if I can't.
-            Actually, I'll use a premium CSS gradient that mimics the prompt for now, or assume the user will place the image.
-        */}
-        <div style={{
+    <section
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        padding: "120px 24px 80px",
+        background: "#000000",
+      }}
+    >
+      {/* Background glows — brand colours */}
+      <div
+        style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.2) 0%, rgba(0, 0, 0, 1) 100%)",
-        }} />
-        <div className="grid-overlay" style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-          maskImage: "radial-gradient(circle at center, black, transparent)",
-        }} />
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        {/* Orange top-left */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-10%",
+            left: "-5%",
+            width: "600px",
+            height: "600px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,140,0,0.12) 0%, transparent 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+        {/* Red bottom-right */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-10%",
+            right: "-5%",
+            width: "700px",
+            height: "700px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(232,41,28,0.1) 0%, transparent 70%)",
+            filter: "blur(60px)",
+          }}
+        />
+        {/* Blue center */}
+        <div
+          style={{
+            position: "absolute",
+            top: "40%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "800px",
+            height: "400px",
+            background: "radial-gradient(ellipse, rgba(77,127,255,0.07) 0%, transparent 70%)",
+          }}
+        />
+        {/* Subtle grid */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+          }}
+        />
       </div>
 
-      <div className="container" style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        position: "relative",
-        zIndex: 1,
-        textAlign: "center"
-      }}>
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+          textAlign: "center",
+        }}
+      >
+        {/* Seats badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           style={{
-            display: "inline-block",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
             padding: "8px 20px",
-            background: "rgba(79, 70, 229, 0.1)",
-            border: "1px solid rgba(79, 70, 229, 0.3)",
+            background: "rgba(255,140,0,0.08)",
+            border: "1px solid rgba(255,140,0,0.25)",
             borderRadius: "100px",
-            color: "#818cf8",
-            fontSize: "14px",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            letterSpacing: "2px",
-            marginBottom: "32px"
+            marginBottom: "36px",
           }}
         >
-          Limited Seats: {seatsLeft} / 100 Remaining
+          <div
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              background: "#FF8C00",
+              boxShadow: "0 0 8px #FF8C00",
+            }}
+          />
+          <span
+            style={{
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "#FF8C00",
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
+            {seatsLeft} / 100 Seats Remaining
+          </span>
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style={{
-            fontSize: "clamp(40px, 8vw, 90px)",
+            fontSize: "clamp(42px, 8vw, 96px)",
             fontWeight: 800,
             color: "#fff",
-            lineHeight: 1.1,
-            marginBottom: "24px",
-            fontFamily: "'Inter', sans-serif"
+            lineHeight: 1.0,
+            marginBottom: "12px",
+            fontFamily: "'Inter', sans-serif",
+            letterSpacing: "-0.04em",
           }}
         >
-          Ultimate AI Workshop<br />
-          <span style={{ 
-            background: "linear-gradient(to right, #818cf8, #c084fc)",
+          Ultimate AI
+        </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          style={{
+            fontSize: "clamp(42px, 8vw, 96px)",
+            fontWeight: 800,
+            lineHeight: 1.0,
+            marginBottom: "32px",
+            fontFamily: "'Inter', sans-serif",
+            letterSpacing: "-0.04em",
+            background: "linear-gradient(135deg, #FF8C00 0%, #E8291C 50%, #4D7FFF 100%)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
-          }}>& Training</span>
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            display: "inline-block",
+          }}
+        >
+          Workshop & Training
         </motion.h1>
 
+        {/* Subtext */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           style={{
-            fontSize: "clamp(18px, 1.5vw, 24px)",
-            color: "#94a3b8",
-            maxWidth: "800px",
-            margin: "0 auto 48px",
-            lineHeight: 1.6
+            fontSize: "clamp(17px, 1.5vw, 22px)",
+            color: "rgba(255,255,255,0.45)",
+            maxWidth: "680px",
+            margin: "0 auto 56px",
+            lineHeight: 1.65,
+            fontFamily: "'Inter', sans-serif",
           }}
         >
-          3-Hour Intense Workshop. Sunday from 10:00 AM to 1:00 PM. Master Vibe Coding, AI Automation, and Generative media.
+          3-Hour Intensive. Sunday 10:00 AM – 1:00 PM. Master Vibe Coding,
+          AI Automation, and Generative Media in one session.
         </motion.p>
 
-        {/* Stats Grid */}
+        {/* Stats row */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "24px",
-            marginBottom: "64px"
+            display: "flex",
+            justifyContent: "center",
+            gap: "0",
+            marginBottom: "60px",
+            flexWrap: "wrap",
           }}
         >
           {[
             { label: "Duration", value: "3 Hours" },
-            { label: "Schedule", value: "Sunday 10 AM - 1 PM" },
-            { label: "Curriculum", value: "3 Core Topics" },
-            { label: "Investment", value: "₹199" }
+            { label: "Schedule", value: "Sun · 10 AM" },
+            { label: "Topics", value: "3 Modules" },
+            { label: "Investment", value: "₹199" },
           ].map((item, i) => (
-            <div key={i} style={{
-              padding: "32px",
-              background: "rgba(255, 255, 255, 0.03)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
-              borderRadius: "24px",
-              backdropFilter: "blur(10px)"
-            }}>
-              <div style={{ color: "#64748b", fontSize: "14px", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "1px" }}>{item.label}</div>
-              <div style={{ color: "#fff", fontSize: "24px", fontWeight: 700 }}>{item.value}</div>
+            <div
+              key={i}
+              style={{
+                padding: "28px 40px",
+                borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: "rgba(255,255,255,0.3)",
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  marginBottom: "8px",
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                {item.label}
+              </div>
+              <div
+                style={{
+                  fontSize: "22px",
+                  fontWeight: 800,
+                  color: "#ffffff",
+                  fontFamily: "'Inter', sans-serif",
+                  letterSpacing: "-0.5px",
+                }}
+              >
+                {item.value}
+              </div>
             </div>
           ))}
         </motion.div>
 
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          style={{ display: "flex", gap: "20px", justifyContent: "center", flexWrap: "wrap" }}
+          style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}
         >
           <motion.button
             onClick={onEnrollClick}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(79, 70, 229, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(255,140,0,0.35)" }}
+            whileTap={{ scale: 0.97 }}
             style={{
-              padding: "20px 48px",
-              background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+              padding: "18px 48px",
+              background: "linear-gradient(135deg, #FF8C00, #E8291C)",
               color: "#fff",
               border: "none",
               borderRadius: "100px",
-              fontSize: "18px",
+              fontSize: "17px",
               fontWeight: 700,
               cursor: "pointer",
-              transition: "all 0.3s"
+              fontFamily: "'Inter', sans-serif",
+              letterSpacing: "-0.2px",
             }}
           >
             Enroll Now @ ₹199
           </motion.button>
           <motion.a
             href="#topics"
-            whileHover={{ background: "rgba(255, 255, 255, 0.1)" }}
+            whileHover={{ background: "rgba(255,255,255,0.07)" }}
             style={{
-              padding: "20px 48px",
+              padding: "18px 48px",
               background: "transparent",
-              color: "#fff",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "rgba(255,255,255,0.7)",
+              border: "1px solid rgba(255,255,255,0.12)",
               borderRadius: "100px",
-              fontSize: "18px",
+              fontSize: "17px",
               fontWeight: 600,
               textDecoration: "none",
               cursor: "pointer",
-              transition: "all 0.3s"
+              fontFamily: "'Inter', sans-serif",
+              transition: "background 0.25s ease",
             }}
           >
-            View Topics
+            View Topics ↓
           </motion.a>
         </motion.div>
       </div>

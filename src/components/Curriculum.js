@@ -81,10 +81,10 @@ function ModuleCard({ mod, index }) {
       transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="module-card"
       style={{
-        background: "white",
+        background: "rgba(255,255,255,0.04)",
         borderRadius: "24px",
-        border: "1px solid rgba(0,0,0,0.06)",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
+        border: "1px solid rgba(255,255,255,0.07)",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
         marginBottom: "24px",
         display: "flex",
         flexDirection: "column",
@@ -97,13 +97,15 @@ function ModuleCard({ mod, index }) {
             fontSize: "14px",
             fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
-            color: "#4F46E5",
+            background: "linear-gradient(135deg, #FF8C00, #E8291C)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
             letterSpacing: "1px",
           }}
         >
           MODULE {mod.number}
         </div>
-        <div style={{ fontSize: "14px", color: "#64748b", fontWeight: 600 }}>
+        <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", fontWeight: 600 }}>
           {mod.duration}
         </div>
       </div>
@@ -113,7 +115,7 @@ function ModuleCard({ mod, index }) {
         style={{
           fontWeight: 700,
           fontFamily: "'Inter', sans-serif",
-          color: "#0a0a0a",
+          color: "#ffffff",
           letterSpacing: "-0.5px",
           lineHeight: 1.2
         }}
@@ -121,7 +123,7 @@ function ModuleCard({ mod, index }) {
         {mod.title}
       </h3>
       
-      <p style={{ fontSize: "16px", color: "#475569", lineHeight: 1.6 }}>
+      <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
         {mod.description}
       </p>
 
@@ -131,12 +133,12 @@ function ModuleCard({ mod, index }) {
             key={topic}
             style={{
               padding: "6px 12px",
-              background: "#f8fafc",
-              border: "1px solid #e2e8f0",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: "100px",
               fontSize: "12px",
               fontWeight: 600,
-              color: "#64748b",
+              color: "rgba(255,255,255,0.45)",
             }}
           >
             {topic}
@@ -156,7 +158,7 @@ export default function Curriculum() {
       id="curriculum"
       className="curriculum-section"
       style={{
-        background: "#fafafa",
+        background: "#000000",
         position: "relative"
       }}
     >
@@ -176,7 +178,9 @@ export default function Curriculum() {
               display: "inline-block",
               fontSize: "13px",
               fontWeight: 700,
-              color: "#4F46E5",
+              background: "linear-gradient(135deg, #FF8C00, #E8291C)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               letterSpacing: "1px",
               marginBottom: "16px",
               textTransform: "uppercase"
@@ -189,7 +193,7 @@ export default function Curriculum() {
             style={{
               fontWeight: 800,
               fontFamily: "'Inter', sans-serif",
-              color: "#0a0a0a",
+              color: "#ffffff",
               letterSpacing: "-0.04em",
               lineHeight: 1.05,
               marginBottom: "24px",
@@ -199,14 +203,14 @@ export default function Curriculum() {
             <br />
             you need to
             <br />
-            <span style={{ color: "#94a3b8", fontStyle: "italic", fontWeight: 400, fontFamily: "'Poppins', sans-serif" }}>
+            <span style={{ color: "#ffffff", fontStyle: "italic", fontWeight: 400, fontFamily: "'Poppins', sans-serif" }}>
               execute.
             </span>
           </h2>
           <p
             className="curriculum-subtitle"
             style={{
-              color: "#475569",
+              color: "rgba(255,255,255,0.55)",
               lineHeight: 1.6,
               marginBottom: "40px",
               maxWidth: "400px"
@@ -225,16 +229,16 @@ export default function Curriculum() {
                 key={s.label}
                 style={{
                   padding: "20px",
-                  background: "white",
-                  border: "1px solid rgba(0,0,0,0.06)",
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.07)",
                   borderRadius: "16px",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center"
                 }}
               >
-                <span style={{ fontSize: "14px", color: "#64748b", fontWeight: 500 }}>{s.label}</span>
-                <strong style={{ fontSize: "15px", color: "#0a0a0a", fontWeight: 700 }}>{s.value}</strong>
+                <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>{s.label}</span>
+                <strong style={{ fontSize: "15px", color: "#ffffff", fontWeight: 700 }}>{s.value}</strong>
               </div>
             ))}
           </div>

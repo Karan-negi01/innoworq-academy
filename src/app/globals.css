@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #4F46E5;
-  --primary-end: #7C3AED;
-  --accent: #6366f1;
-  --muted: #64748b;
-  --border: rgba(0,0,0,0.06);
-  --gradient: linear-gradient(135deg, #4F46E5, #7C3AED);
+  --background: #000000;
+  --foreground: #f0f0f0;
+  /* Logo-extracted gradient: orange → red → blue */
+  --primary: #4D7FFF;        /* logo blue */
+  --primary-end: #E8291C;    /* logo red */
+  --accent: #FF8C00;         /* logo orange */
+  --muted: #8a8a9a;
+  --border: rgba(255,255,255,0.08);
+  --gradient: linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF);
+  --card-bg: rgba(14,14,20,0.95);
+  --surface: #000000;
 }
 
 @theme inline {
@@ -38,20 +41,19 @@ body {
   position: relative;
 }
 
-/* Premium subtle dot grid background */
+/* Premium subtle dot grid — bright dots on black */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -1;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.6;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
   pointer-events: none;
 }
 
 ::selection {
-  background: #4F46E5;
+  background: #E8291C;
   color: white;
 }
 
@@ -60,8 +62,8 @@ body::before {
   display: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* General Custom Scrollbar */
@@ -69,12 +71,12 @@ body::before {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e2e8f0;
+  background: rgba(255,140,0,0.35);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: rgba(255,140,0,0.6);
 }

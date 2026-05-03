@@ -1,109 +1,145 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const features = [
   {
-    icon: "⚡",
+    number: "01",
     title: "Vibe Coding & Automation",
-    description: "Forget typing syntax. Learn to generate production-ready code natively using high-end AI agents. We focus on outcome, not boilerplate.",
-    color: "#4F46E5",
-    bg: "linear-gradient(135deg, rgba(79,70,229,0.08), rgba(79,70,229,0.02))",
-    desktopSpan: 2, 
+    description:
+      "Forget typing syntax. Learn to generate production-ready code using high-end AI agents. We focus on outcome, not boilerplate.",
+    color: "#FF8C00",
+    tag: "Build",
   },
   {
-    icon: "💼",
-    title: "Industry Ready",
-    description: "Skills taught by professionals, for professionals.",
-    color: "#7C3AED",
-    bg: "linear-gradient(135deg, rgba(124,58,237,0.08), rgba(124,58,237,0.02))",
-    desktopSpan: 1, 
+    number: "02",
+    title: "Industry-Ready Skills",
+    description:
+      "Every module is built around real workflows used by top companies. No fluff — just the skills that get you hired.",
+    color: "#4D7FFF",
+    tag: "Work",
   },
   {
-    icon: "📁",
+    number: "03",
     title: "Live Command Portfolio",
-    description: "Don't just show certificates. Show your deployed agents working live.",
-    color: "#0a0a0a",
-    bg: "linear-gradient(135deg, rgba(10,10,10,0.05), rgba(10,10,10,0.01))",
-    desktopSpan: 1, 
+    description:
+      "Don't just show certificates. Walk into interviews with deployed AI agents that actually run live.",
+    color: "#E8291C",
+    tag: "Ship",
   },
   {
-    icon: "🎯",
+    number: "04",
     title: "Zero-Fluff Curriculum",
-    description: "20 hours of pure, dense, action-oriented learning. Every minute is spent on tools you'll actually use on the job tomorrow.",
-    color: "#10b981",
-    bg: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02))",
-    desktopSpan: 2,
+    description:
+      "20 hours of dense, action-oriented learning. Every minute is spent on tools you'll use on the job tomorrow.",
+    color: "#FF8C00",
+    tag: "Execute",
   },
 ];
 
-function BentoCard({ feature, index }) {
+function FeatureRow({ feature, index }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className={`bento-card span-${feature.desktopSpan}`}
+      initial={{ opacity: 0, x: -24 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="feature-row"
       style={{
-        background: feature.bg,
-        border: "1px solid rgba(0,0,0,0.04)",
-        boxShadow: "0 10px 40px rgba(0,0,0,0.02)",
+        display: "grid",
+        gridTemplateColumns: "56px 1fr auto",
+        gap: "32px",
+        alignItems: "center",
+        padding: "32px 0",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        cursor: "default",
         position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
       }}
-      whileHover={{ y: -4, boxShadow: "0 20px 50px rgba(0,0,0,0.06)" }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "rgba(255,255,255,0.015)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "transparent";
+      }}
     >
-      <div 
+      {/* Accent left bar on hover */}
+      <motion.div
+        initial={{ scaleY: 0 }}
+        whileHover={{ scaleY: 1 }}
         style={{
-          width: "48px",
-          height: "48px",
-          background: "white",
-          borderRadius: "14px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "20px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-          marginBottom: "32px",
-          border: "1px solid rgba(0,0,0,0.05)"
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: "2px",
+          background: feature.color,
+          borderRadius: "2px",
+          transformOrigin: "top",
+        }}
+      />
+
+      {/* Number */}
+      <div
+        style={{
+          fontSize: "13px",
+          fontWeight: 700,
+          fontFamily: "'Inter', sans-serif",
+          color: feature.color,
+          letterSpacing: "1px",
+          opacity: 0.8,
         }}
       >
-        {feature.icon}
+        {feature.number}
       </div>
 
+      {/* Text */}
       <div>
         <h3
-          className="bento-title"
+          className="feature-title"
           style={{
             fontWeight: 700,
             fontFamily: "'Inter', sans-serif",
-            color: "#0a0a0a",
-            marginBottom: "12px",
-            letterSpacing: "-0.5px",
-            lineHeight: 1.2
+            color: "#ffffff",
+            letterSpacing: "-0.4px",
+            lineHeight: 1.2,
+            marginBottom: "8px",
           }}
         >
           {feature.title}
         </h3>
         <p
-          className="bento-desc"
+          className="feature-desc"
           style={{
-            color: "#475569",
-            lineHeight: 1.6,
-            fontWeight: 400,
-            maxWidth: "90%"
+            color: "rgba(255,255,255,0.38)",
+            lineHeight: 1.65,
+            fontFamily: "'Inter', sans-serif",
+            maxWidth: "520px",
           }}
         >
           {feature.description}
         </p>
+      </div>
+
+      {/* Tag pill */}
+      <div
+        style={{
+          padding: "6px 16px",
+          borderRadius: "100px",
+          border: `1px solid ${feature.color}40`,
+          background: `${feature.color}10`,
+          fontSize: "12px",
+          fontWeight: 700,
+          color: feature.color,
+          letterSpacing: "1.5px",
+          textTransform: "uppercase",
+          fontFamily: "'Inter', sans-serif",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {feature.tag}
       </div>
     </motion.div>
   );
@@ -111,112 +147,233 @@ function BentoCard({ feature, index }) {
 
 export default function WhyChooseUs() {
   const titleRef = useRef(null);
-  const titleInView = useInView(titleRef, { once: true, margin: "-100px" });
+  const titleInView = useInView(titleRef, { once: true, margin: "-80px" });
 
   return (
     <section
       id="features"
-      className="features-section"
       style={{
-        background: "transparent",
+        background: "#000000",
+        padding: "140px 0",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-        {/* Section Header */}
-        <motion.div
-          ref={titleRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={titleInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          style={{ textAlign: "center", marginBottom: "80px" }}
-          className="features-header"
-        >
-          <h2
-            className="features-title"
-            style={{
-              fontWeight: 800,
-              fontFamily: "'Inter', sans-serif",
-              color: "#0a0a0a",
-              letterSpacing: "-0.04em",
-              lineHeight: 1.1,
-              marginBottom: "24px",
-            }}
-          >
-            Built for the AI Era,
-            <br className="features-br" />
-            <span style={{ color: "#94a3b8", fontWeight: 400, fontStyle: "italic", fontFamily: "'Poppins', sans-serif" }}>
-              {" "}Not the Past.
-            </span>
-          </h2>
-          <p
-            className="features-subtitle"
-            style={{
-              color: "#475569",
-              maxWidth: "520px",
-              margin: "0 auto",
-              lineHeight: 1.6,
-            }}
-          >
-            We abandoned boring theory. We focus purely on execution and building your intuition for AI tools.
-          </p>
-        </motion.div>
+      {/* Subtle top-right glow */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-100px",
+          right: "-100px",
+          width: "600px",
+          height: "600px",
+          background:
+            "radial-gradient(circle, rgba(255,140,0,0.05) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
 
-        {/* Bento Grid */}
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 24px",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        {/* Two-column header: left = big headline, right = sub + stat */}
+        <div className="features-header-grid">
+          {/* Left: Editorial headline */}
+          <motion.div
+            ref={titleRef}
+            initial={{ opacity: 0, y: 32 }}
+            animate={titleInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Badge */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "6px 16px",
+                background: "rgba(255,140,0,0.08)",
+                border: "1px solid rgba(255,140,0,0.2)",
+                borderRadius: "100px",
+                marginBottom: "28px",
+              }}
+            >
+              <div
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  background: "#FF8C00",
+                  boxShadow: "0 0 8px #FF8C00",
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: "#FF8C00",
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                Why Us
+              </span>
+            </div>
+
+            <h2
+              className="features-title"
+              style={{
+                fontWeight: 800,
+                fontFamily: "'Inter', sans-serif",
+                color: "#ffffff",
+                letterSpacing: "-0.04em",
+                lineHeight: 1.0,
+              }}
+            >
+              Built for the
+              <br />
+              AI Era.
+              <br />
+              <span
+                style={{
+                  color: "#ffffff",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                Not the Past.
+              </span>
+            </h2>
+          </motion.div>
+
+          {/* Right: description + stat block */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={titleInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              paddingBottom: "8px",
+            }}
+          >
+            <p
+              className="features-subtitle"
+              style={{
+                color: "rgba(255,255,255,0.45)",
+                lineHeight: 1.7,
+                fontFamily: "'Inter', sans-serif",
+                marginBottom: "40px",
+              }}
+            >
+              We abandoned boring theory. Every session is focused purely on
+              execution — building your intuition for the tools that matter right
+              now.
+            </p>
+
+            {/* Mini stats row */}
+            <div
+              style={{
+                display: "flex",
+                gap: "40px",
+                borderTop: "1px solid rgba(255,255,255,0.07)",
+                paddingTop: "32px",
+              }}
+            >
+              {[
+                { val: "20+", label: "Live Hours" },
+                { val: "9", label: "Modules" },
+                { val: "16+", label: "AI Tools" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div
+                    style={{
+                      fontSize: "28px",
+                      fontWeight: 800,
+                      fontFamily: "'Inter', sans-serif",
+                      color: "#ffffff",
+                      letterSpacing: "-1px",
+                      lineHeight: 1,
+                      marginBottom: "4px",
+                    }}
+                  >
+                    {s.val}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 500,
+                      color: "rgba(255,255,255,0.35)",
+                      letterSpacing: "1px",
+                      textTransform: "uppercase",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Divider */}
         <div
           style={{
-            display: "grid",
-            gap: "24px",
+            height: "1px",
+            background: "rgba(255,255,255,0.07)",
+            margin: "72px 0 0",
           }}
-          className="bento-grid"
-        >
+        />
+
+        {/* Feature rows */}
+        <div>
           {features.map((feature, i) => (
-            <BentoCard key={feature.title} feature={feature} index={i} />
+            <FeatureRow key={feature.number} feature={feature} index={i} />
           ))}
         </div>
       </div>
+
       <style>{`
-        .features-section { padding: 120px 0; }
-        .bento-card {
-          border-radius: 24px;
-          padding: 40px;
-          min-height: 260px;
+        .features-header-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: end;
         }
-        .bento-title { font-size: 22px; }
-        .bento-desc { font-size: 15px; }
-        .features-title { font-size: clamp(36px, 5vw, 56px); }
-        .features-subtitle { font-size: 18px; }
+        .features-title { font-size: clamp(44px, 6vw, 76px); }
+        .features-subtitle { font-size: 17px; max-width: 420px; }
+        .feature-title { font-size: 20px; }
+        .feature-desc { font-size: 15px; }
+        .feature-row { border-radius: 4px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; transition: background 0.25s ease; }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-          .features-section { padding: 80px 0; }
-          .features-header { margin-bottom: 40px !important; }
-          .features-title { font-size: 36px; }
-          .features-subtitle { font-size: 16px; }
-          .features-br { display: none; }
-          .bento-grid {
+        @media (max-width: 900px) {
+          .features-header-grid {
             grid-template-columns: 1fr;
+            gap: 40px;
           }
-          .bento-card {
-            padding: 32px;
-            min-height: auto;
-          }
+          .features-subtitle { max-width: 100%; }
         }
 
-        /* Tablet / Small Laptop */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .bento-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+        @media (max-width: 768px) {
+          .features-title { font-size: 40px; }
+          .features-subtitle { font-size: 15px; }
+          .feature-title { font-size: 17px; }
+          .feature-desc { font-size: 14px; }
+          .feature-row {
+            grid-template-columns: 40px 1fr !important;
+            gap: 20px !important;
           }
-          .bento-card.span-2 { grid-column: span 2; }
-        }
-
-        /* Desktop */
-        @media (min-width: 1025px) {
-          .bento-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-          }
-          .bento-card.span-2 { grid-column: span 2; }
-          .bento-card.span-1 { grid-column: span 1; }
+          .feature-tag { display: none; }
         }
       `}</style>
     </section>

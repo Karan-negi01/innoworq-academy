@@ -33,7 +33,7 @@ export default function MediaGallery() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
 
   return (
-    <section ref={targetRef} className="media-gallery-section" style={{ background: "#0a0a0a", position: "relative" }}>
+    <section ref={targetRef} className="media-gallery-section" style={{ background: "#000000", position: "relative" }}>
       <div className="media-gallery-sticky" style={{
         position: "sticky",
         top: 0,
@@ -105,7 +105,7 @@ export default function MediaGallery() {
                 border: "2px solid rgba(255,255,255,0.2)", // Thicker border
                 boxShadow: "0 60px 120px rgba(0,0,0,0.9)",
                 flexShrink: 0,
-                background: "#0a0a0a",
+                background: "#000000",
               }}
             >
               <video 

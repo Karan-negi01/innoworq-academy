@@ -1,56 +1,228 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
-export default function WorkshopTopics() {
-  const topics = [
-    {
-      title: "Vibe Coding",
-      description: "Learn to code with the flow. Leverage AI to write code faster, cleaner, and with more intuition.",
-      icon: "⚡"
-    },
-    {
-      title: "AI Automation",
-      description: "Automate boring tasks. Build agents and workflows that work for you 24/7 using n8n and Make.com.",
-      icon: "🤖"
-    },
-    {
-      title: "Generative Media",
-      description: "Deep dive into generative media. Master Stable Diffusion, Midjourney, and video generation tools.",
-      icon: "🎨"
-    }
-  ];
+const topics = [
+  {
+    number: "01",
+    title: "Vibe Coding",
+    description:
+      "Learn to code with the flow. Leverage AI to write code faster, cleaner, and with more intuition than you ever thought possible.",
+    color: "#FF8C00",
+    tag: "Build",
+  },
+  {
+    number: "02",
+    title: "AI Automation",
+    description:
+      "Automate repetitive tasks. Build agents and workflows that run 24/7 using n8n and Make.com — without writing a single line of code.",
+    color: "#E8291C",
+    tag: "Automate",
+  },
+  {
+    number: "03",
+    title: "Generative Media",
+    description:
+      "Master AI-generated images, video, and audio. Use Midjourney, Runway, ElevenLabs, and Kling to create content at scale.",
+    color: "#4D7FFF",
+    tag: "Create",
+  },
+];
+
+function TopicRow({ topic, index }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="topics" style={{ padding: "100px 24px", background: "#0a0a0a" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "80px" }}>
-          <h2 style={{ fontSize: "14px", color: "#4F46E5", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "16px" }}>What You'll Learn</h2>
-          <h3 style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "#fff", fontWeight: 800 }}>Workshop Highlights</h3>
-        </div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: -24 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "56px 1fr auto",
+        gap: "32px",
+        alignItems: "center",
+        padding: "36px 16px",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        position: "relative",
+        borderRadius: "4px",
+        transition: "background 0.25s ease",
+        cursor: "default",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "rgba(255,255,255,0.015)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "transparent";
+      }}
+    >
+      {/* Accent bar */}
+      <motion.div
+        initial={{ scaleY: 0 }}
+        whileHover={{ scaleY: 1 }}
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: "2px",
+          background: topic.color,
+          borderRadius: "2px",
+          transformOrigin: "top",
+        }}
+      />
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "32px" }}>
-          {topics.map((topic, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+      {/* Number */}
+      <div
+        style={{
+          fontSize: "13px",
+          fontWeight: 700,
+          fontFamily: "'Inter', sans-serif",
+          color: topic.color,
+          letterSpacing: "1px",
+          opacity: 0.85,
+        }}
+      >
+        {topic.number}
+      </div>
+
+      {/* Text */}
+      <div>
+        <h3
+          style={{
+            fontSize: "20px",
+            fontWeight: 700,
+            fontFamily: "'Inter', sans-serif",
+            color: "#ffffff",
+            letterSpacing: "-0.4px",
+            lineHeight: 1.2,
+            marginBottom: "8px",
+          }}
+        >
+          {topic.title}
+        </h3>
+        <p
+          style={{
+            color: "rgba(255,255,255,0.38)",
+            lineHeight: 1.65,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "15px",
+            maxWidth: "520px",
+          }}
+        >
+          {topic.description}
+        </p>
+      </div>
+
+      {/* Tag */}
+      <div
+        style={{
+          padding: "6px 18px",
+          borderRadius: "100px",
+          border: `1px solid ${topic.color}40`,
+          background: `${topic.color}10`,
+          fontSize: "12px",
+          fontWeight: 700,
+          color: topic.color,
+          letterSpacing: "1.5px",
+          textTransform: "uppercase",
+          fontFamily: "'Inter', sans-serif",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {topic.tag}
+      </div>
+    </motion.div>
+  );
+}
+
+export default function WorkshopTopics() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="topics" style={{ background: "#000000", padding: "120px 0" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
+
+        {/* Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ marginBottom: "72px" }}
+        >
+          {/* Badge */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "6px 16px",
+              background: "rgba(255,140,0,0.08)",
+              border: "1px solid rgba(255,140,0,0.2)",
+              borderRadius: "100px",
+              marginBottom: "28px",
+            }}
+          >
+            <div
               style={{
-                padding: "48px",
-                background: "linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.05)",
-                borderRadius: "32px",
-                transition: "all 0.3s"
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: "#FF8C00",
+                boxShadow: "0 0 8px #FF8C00",
               }}
-              whileHover={{ y: -10, border: "1px solid rgba(79, 70, 229, 0.3)" }}
+            />
+            <span
+              style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                color: "#FF8C00",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontFamily: "'Inter', sans-serif",
+              }}
             >
-              <div style={{ fontSize: "40px", marginBottom: "24px" }}>{topic.icon}</div>
-              <h4 style={{ fontSize: "24px", color: "#fff", fontWeight: 700, marginBottom: "16px" }}>{topic.title}</h4>
-              <p style={{ color: "#94a3b8", lineHeight: 1.7, fontSize: "17px" }}>{topic.description}</p>
-            </motion.div>
-          ))}
-        </div>
+              What You&apos;ll Learn
+            </span>
+          </div>
+
+          <h2
+            style={{
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 800,
+              fontFamily: "'Inter', sans-serif",
+              color: "#ffffff",
+              letterSpacing: "-0.04em",
+              lineHeight: 1.0,
+              marginBottom: "0",
+            }}
+          >
+            3 sessions.
+            <br />
+            <span
+              style={{
+                color: "#ffffff",
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              Infinite leverage.
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* Divider */}
+        <div style={{ height: "1px", background: "rgba(255,255,255,0.07)", marginBottom: "0" }} />
+
+        {/* Topic rows */}
+        {topics.map((topic, i) => (
+          <TopicRow key={topic.number} topic={topic} index={i} />
+        ))}
       </div>
     </section>
   );

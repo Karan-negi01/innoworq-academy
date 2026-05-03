@@ -15,13 +15,13 @@ export default function FinalCTA({ onEnrollClick }) {
   const borderRadius = useTransform(scrollYProgress, [0, 1], ["40px", "0px"]);
 
   return (
-    <section ref={containerRef} className="final-cta-section" style={{ background: "white", paddingBottom: "0" }}>
+    <section ref={containerRef} className="final-cta-section" style={{ background: "#000000", paddingBottom: "0" }}>
       <motion.div
         className="final-cta-container"
         style={{
           scale,
           borderRadius,
-          background: "linear-gradient(135deg, #1e1b4b, #312e81, #4c1d95)",
+          background: "#000000",
           position: "relative",
           overflow: "hidden",
           minHeight: "80vh",
@@ -46,7 +46,7 @@ export default function FinalCTA({ onEnrollClick }) {
             width: "600px",
             height: "600px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(139,92,246,0.3) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(255,140,0,0.25) 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
@@ -64,7 +64,7 @@ export default function FinalCTA({ onEnrollClick }) {
             width: "800px",
             height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(79,70,229,0.2) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(232,41,28,0.2) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
