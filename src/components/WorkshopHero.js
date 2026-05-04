@@ -195,7 +195,7 @@ export default function WorkshopHero({ onEnrollClick, seatsLeft }) {
             { label: "Duration", value: "3 Hours" },
             { label: "Schedule", value: "Sun · 10 AM" },
             { label: "Topics", value: "3 Modules" },
-            { label: "Investment", value: "₹199" },
+            { label: "Investment", value: "₹1" },
           ].map((item, i) => (
             <div
               key={i}
@@ -257,7 +257,7 @@ export default function WorkshopHero({ onEnrollClick, seatsLeft }) {
               letterSpacing: "-0.2px",
             }}
           >
-            Enroll Now @ ₹199
+            Enroll Now @ ₹1
           </motion.button>
           <motion.a
             href="#topics"

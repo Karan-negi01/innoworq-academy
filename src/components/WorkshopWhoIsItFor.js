@@ -152,7 +152,7 @@ export default function WorkshopWhoIsItFor({ onEnrollClick }) {
                 flexShrink: 0,
               }}
             >
-              Enroll Now @ ₹199
+              Enroll Now @ ₹1
             </motion.button>
           </div>
         </motion.div>

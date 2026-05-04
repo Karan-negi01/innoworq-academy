@@ -235,7 +235,7 @@ export default function WorkshopPricing({ onEnrollClick, seatsLeft }) {
 
             <div style={{ display: "flex", alignItems: "flex-start", gap: "4px", marginBottom: "8px" }}>
               <span style={{ fontSize: "28px", fontWeight: 700, color: "#fff", marginTop: "10px", fontFamily: "'Inter', sans-serif" }}>₹</span>
-              <span style={{ fontSize: "80px", fontWeight: 800, color: "#fff", lineHeight: 1, letterSpacing: "-3px", fontFamily: "'Inter', sans-serif" }}>199</span>
+              <span style={{ fontSize: "80px", fontWeight: 800, color: "#fff", lineHeight: 1, letterSpacing: "-3px", fontFamily: "'Inter', sans-serif" }}>1</span>
             </div>
             <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.25)", marginBottom: "40px", fontFamily: "'Inter', sans-serif" }}>
               All taxes included
