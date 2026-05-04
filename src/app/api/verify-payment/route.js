@@ -85,7 +85,11 @@ export async function POST(request) {
 
           if (seats.workshop > 0) {
             seats.workshop -= 1;
-            fs.writeFileSync(SEATS_FILE, JSON.stringify(seats, null, 2));
+            try {
+              fs.writeFileSync(SEATS_FILE, JSON.stringify(seats, null, 2));
+            } catch (e) {
+              console.warn('Vercel read-only filesystem: skipping seats file update.');
+            }
           }
         }
       }
