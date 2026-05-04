@@ -203,7 +203,7 @@ export default function WorkshopTopics() {
               marginBottom: "0",
             }}
           >
-            3 sessions.
+            3 sessions
             <br />
             <span
               style={{
@@ -213,7 +213,7 @@ export default function WorkshopTopics() {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              Infinite leverage.
+              Infinite leverage
             </span>
           </h2>
         </motion.div>

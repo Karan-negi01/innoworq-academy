@@ -130,7 +130,7 @@ export default function WorkshopWhoIsItFor({ onEnrollClick }) {
                     fontFamily: "'Poppins', sans-serif",
                   }}
                 >
-                  who wants to lead.
+                  who wants to lead
                 </span>
               </h2>
             </div>
