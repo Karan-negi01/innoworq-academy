@@ -67,7 +67,7 @@ function InputField({ label, id, type = "text", placeholder, value, onChange, re
 
 export default function ContactModal({ isOpen, onClose, type = null, onSuccess }) {
   const [enrollType, setEnrollType] = useState(type || "course");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -121,7 +121,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
     // Reset after animation out
     setTimeout(() => {
       setSubmitted(false);
-      setForm({ name: "", email: "", phone: "", message: "" });
+      setForm({ name: "", email: "", phone: "" });
     }, 400);
   };
 
@@ -424,14 +424,6 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                             value={form.phone}
                             onChange={handleChange("phone")}
                             required
-                          />
-                          <InputField
-                            label="Message"
-                            id="contact-message"
-                            placeholder="Any questions or special requirements? (Optional)"
-                            value={form.message}
-                            onChange={handleChange("message")}
-                            textarea
                           />
 
                           <motion.button
