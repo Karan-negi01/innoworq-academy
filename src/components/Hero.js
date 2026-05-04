@@ -10,7 +10,7 @@ function useCountUp(end, duration = 2000, start = false) {
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4); 
+      const eased = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(eased * end));
       if (progress < 1) requestAnimationFrame(step);
       else setCount(end);
@@ -30,8 +30,8 @@ export default function Hero({ onEnrollClick }) {
   }, []);
 
   const tickerItems = [
-    "NEXT-GEN LLMs", "PROMPT ENGINEERING", "VAPI VOICE AGENTS", 
-    "VIBE CODING", "RAG PIPELINES", "AGENTIC WORKFLOWS", 
+    "NEXT-GEN LLMs", "PROMPT ENGINEERING", "VAPI VOICE AGENTS",
+    "VIBE CODING", "RAG PIPELINES", "AGENTIC WORKFLOWS",
     "N8N AUTOMATION", "HEYGEN AVATARS"
   ];
 
@@ -50,7 +50,7 @@ export default function Hero({ onEnrollClick }) {
       }}
     >
       {/* Background Cinematic Video */}
-      <div 
+      <div
         style={{
           position: "absolute",
           top: 0,
@@ -62,10 +62,10 @@ export default function Hero({ onEnrollClick }) {
           pointerEvents: "none"
         }}
       >
-        <video 
-          autoPlay 
-          muted 
-          loop 
+        <video
+          autoPlay
+          muted
+          loop
           playsInline
           style={{
             width: "100%",
@@ -154,7 +154,7 @@ export default function Hero({ onEnrollClick }) {
               display: "inline-block"
             }}
           >
-            {" "}AI Generalist.
+            {" "}AI Generalist
           </span>
         </motion.h1>
 
@@ -186,8 +186,8 @@ export default function Hero({ onEnrollClick }) {
         >
           <motion.button
             onClick={onEnrollClick}
-            whileHover={{ 
-              scale: 1.02, 
+            whileHover={{
+              scale: 1.02,
               y: -2,
               boxShadow: "0 15px 40px rgba(0,0,0,0.25)"
             }}
@@ -208,7 +208,7 @@ export default function Hero({ onEnrollClick }) {
           >
             Begin the Program
           </motion.button>
-          
+
           <motion.a
             href="#curriculum"
             whileHover={{ scale: 1.02 }}
@@ -252,14 +252,14 @@ export default function Hero({ onEnrollClick }) {
           className="hero-stats"
         >
           {[
-             { label: "HOURS", value: 20, prefix: "", suffix: "+" },
-             { label: "MODULES", value: 9, prefix: "", suffix: "" },
-             { label: "INVESTMENT", value: 25000, prefix: "₹", suffix: "" }
+            { label: "HOURS", value: 20, prefix: "", suffix: "+" },
+            { label: "MODULES", value: 9, prefix: "", suffix: "" },
+            { label: "INVESTMENT", value: 25000, prefix: "₹", suffix: "" }
           ].map((stat, i) => (
             <div key={i} className="stat-card" style={{ textAlign: "center", minWidth: "150px" }}>
-              <div className="stat-label" style={{ 
-                fontWeight: 600, 
-                color: "rgba(255,255,255,0.45)", 
+              <div className="stat-label" style={{
+                fontWeight: 600,
+                color: "rgba(255,255,255,0.45)",
                 fontSize: "13px",
                 letterSpacing: "2px",
                 textTransform: "uppercase",
@@ -267,8 +267,8 @@ export default function Hero({ onEnrollClick }) {
               }}>
                 {stat.label}
               </div>
-              <div className="stat-value" style={{ 
-                fontWeight: 800, 
+              <div className="stat-value" style={{
+                fontWeight: 800,
                 fontFamily: "'Inter', sans-serif",
                 color: "#ffffff",
                 lineHeight: 1,
@@ -285,11 +285,11 @@ export default function Hero({ onEnrollClick }) {
       </div>
 
       {/* Infinite Bottom Ticker */}
-      <div 
+      <div
         className="hero-ticker"
         style={{
           background: "#000000",
-          padding: "20px 0", 
+          padding: "20px 0",
           width: "100%",
           overflow: "hidden",
           display: "flex",
@@ -301,14 +301,14 @@ export default function Hero({ onEnrollClick }) {
         }}
       >
         <motion.div
-           animate={{ x: ["0%", "-50%"] }}
-           transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-           style={{ display: "flex", width: "max-content" }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+          style={{ display: "flex", width: "max-content" }}
         >
           {/* Double the array for seamless looping */}
           {[...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               style={{
                 display: "inline-flex",
                 alignItems: "center",

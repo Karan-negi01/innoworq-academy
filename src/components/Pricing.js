@@ -59,7 +59,7 @@ export default function Pricing({ onEnrollClick }) {
             An investment in your
             <br />
             <span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "'Poppins', sans-serif", background: "linear-gradient(135deg, #FF8C00, #4D7FFF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              future leverage.
+              future leverage
             </span>
           </h2>
           <p className="pricing-subtitle" style={{ color: "#94a3b8", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>
@@ -99,14 +99,14 @@ export default function Pricing({ onEnrollClick }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               {features.map((feature, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                  <div style={{ 
-                    marginTop: "3px", 
-                    width: "20px", 
-                    height: "20px", 
-                    borderRadius: "50%", 
-                    background: "rgba(255,140,0,0.12)", 
-                    display: "flex", 
-                    alignItems: "center", 
+                  <div style={{
+                    marginTop: "3px",
+                    width: "20px",
+                    height: "20px",
+                    borderRadius: "50%",
+                    background: "rgba(255,140,0,0.12)",
+                    display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0
                   }}>
@@ -119,8 +119,8 @@ export default function Pricing({ onEnrollClick }) {
           </div>
 
           {/* Right Side - Price & CTA */}
-          <div className="pricing-right" style={{ 
-            flex: "1 1 300px", 
+          <div className="pricing-right" style={{
+            flex: "1 1 300px",
             background: "linear-gradient(135deg, rgba(255,140,0,0.06), rgba(0,0,0,0))",
             display: "flex",
             flexDirection: "column",
@@ -141,8 +141,8 @@ export default function Pricing({ onEnrollClick }) {
 
             <motion.button
               onClick={onEnrollClick}
-              whileHover={{ 
-                y: -2, 
+              whileHover={{
+                y: -2,
                 scale: 1.02,
                 boxShadow: "0 10px 30px rgba(255,255,255,0.2)"
               }}

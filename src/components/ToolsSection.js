@@ -192,7 +192,7 @@ export default function ToolsSection() {
               fontStyle: "italic",
             }}
           >
-            with the tools that run the world.
+            with the tools that run the world
           </p>
 
           <p

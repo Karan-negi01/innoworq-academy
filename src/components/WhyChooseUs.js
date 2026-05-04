@@ -250,7 +250,7 @@ export default function WhyChooseUs() {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                Not the Past.
+                Not the Past
               </span>
             </h2>
           </motion.div>

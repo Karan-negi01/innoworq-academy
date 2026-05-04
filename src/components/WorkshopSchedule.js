@@ -207,7 +207,7 @@ export default function WorkshopSchedule() {
               marginBottom: "16px",
             }}
           >
-            3 hours.
+            3 hours
             <br />
             <span
               style={{
@@ -217,7 +217,7 @@ export default function WorkshopSchedule() {
                 fontFamily: "'Poppins', sans-serif",
               }}
             >
-              Zero wasted minutes.
+              Zero wasted minutes
             </span>
           </h2>
           <p
