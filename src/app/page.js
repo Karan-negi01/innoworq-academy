@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ToolsSection from "@/components/ToolsSection";
 import Curriculum from "@/components/Curriculum";
-import MediaGallery from "@/components/MediaGallery";
+
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
@@ -27,7 +27,7 @@ export default function Home() {
         <WhyChooseUs />
         <ToolsSection />
         <Curriculum />
-        <MediaGallery />
+
         <Pricing onEnrollClick={openModal} />
         <FAQ />
         <FinalCTA onEnrollClick={openModal} />
