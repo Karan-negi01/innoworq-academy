@@ -92,7 +92,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
     e.preventDefault();
     setSubmitting(true);
     setError("");
-    
+
     try {
       const response = await fetch("/api/enroll", {
         method: "POST",
@@ -147,7 +147,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
           />
 
           {/* Modal Centering Wrapper */}
-          <div 
+          <div
             style={{
               position: "fixed",
               inset: 0,
@@ -172,316 +172,316 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                 pointerEvents: "auto",
               }}
             >
-            <div
-              style={{
-                background: "rgba(10,10,15,0.97)",
-                borderRadius: "24px",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,140,0,0.15)",
-                overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.08)"
-              }}
-            >
-              {/* Header */}
               <div
                 style={{
-                  background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
-                  padding: "32px 36px",
-                  position: "relative",
+                  background: "rgba(10,10,15,0.97)",
+                  borderRadius: "24px",
+                  boxShadow: "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,140,0,0.15)",
+                  overflow: "hidden",
+                  border: "1px solid rgba(255,255,255,0.08)"
                 }}
               >
-                <button
-                  onClick={handleClose}
-                  aria-label="Close modal"
+                {/* Header */}
+                <div
                   style={{
-                    position: "absolute",
-                    top: "16px",
-                    right: "16px",
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "50%",
-                    background: "rgba(255,255,255,0.2)",
-                    border: "none",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                    transition: "background 0.2s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.3)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
-
-                <h2
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: 800,
-                    fontFamily: "'Poppins', sans-serif",
-                    color: "white",
-                    letterSpacing: "-0.5px",
-                    marginBottom: "8px",
-                    textAlign: "center"
+                    background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
+                    padding: "32px 36px",
+                    position: "relative",
                   }}
                 >
-                  {submitted ? "Enrollment Successful! 🎉" : `Secure Your Spot`}
-                </h2>
-                <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: 1.5, textAlign: "center", maxWidth: "300px", margin: "0 auto" }}>
-                  {submitted
-                    ? "Check your WhatsApp for confirmation."
-                    : `Complete your application for the ${enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}.`}
-                </p>
-              </div>
+                  <button
+                    onClick={handleClose}
+                    aria-label="Close modal"
+                    style={{
+                      position: "absolute",
+                      top: "16px",
+                      right: "16px",
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: "50%",
+                      background: "rgba(255,255,255,0.2)",
+                      border: "none",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      transition: "background 0.2s",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.3)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
 
-              {/* Body */}
-              <div style={{ padding: "36px" }}>
-                <AnimatePresence mode="wait">
-                  {submitted ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      style={{ textAlign: "center", padding: "24px 0" }}
-                    >
-                      <div
-                        style={{
-                          width: "72px",
-                          height: "72px",
-                          borderRadius: "50%",
-                          background: "linear-gradient(135deg, rgba(255,140,0,0.1), rgba(232,41,28,0.1))",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          margin: "0 auto 20px",
-                          fontSize: "36px",
-                        }}
+                  <h2
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: 800,
+                      fontFamily: "'Poppins', sans-serif",
+                      color: "white",
+                      letterSpacing: "-0.5px",
+                      marginBottom: "8px",
+                      textAlign: "center"
+                    }}
+                  >
+                    {submitted ? "Enrollment Successful! 🎉" : `Secure Your Spot`}
+                  </h2>
+                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: 1.5, textAlign: "center", maxWidth: "300px", margin: "0 auto" }}>
+                    {submitted
+                      ? "Check your WhatsApp for confirmation."
+                      : `Complete your application for the ${enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}.`}
+                  </p>
+                </div>
+
+                {/* Body */}
+                <div style={{ padding: "36px" }}>
+                  <AnimatePresence mode="wait">
+                    {submitted ? (
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        style={{ textAlign: "center", padding: "24px 0" }}
                       >
-                        ✅
-                      </div>
-                      <h3
-                        style={{
-                          fontSize: "20px",
-                          fontWeight: 700,
-                          fontFamily: "'Poppins', sans-serif",
-                          color: "#ffffff",
-                          marginBottom: "12px",
-                        }}
-                      >
-                        Thank You, {form.name || "there"}!
-                      </h3>
-                      <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "28px" }}>
-                        Your enquiry for the <strong style={{ color: "#FF8C00" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> has been submitted.
-                      </p>
-                      
-                      {enrollType === 'workshop' && (
-                        <motion.a
-                          href="https://wa.me/919211633068?text=Hi, I just enrolled for the Sunday AI Workshop. Please share the Zoom link."
-                          target="_blank"
+                        <div
+                          style={{
+                            width: "72px",
+                            height: "72px",
+                            borderRadius: "50%",
+                            background: "linear-gradient(135deg, rgba(255,140,0,0.1), rgba(232,41,28,0.1))",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            margin: "0 auto 20px",
+                            fontSize: "36px",
+                          }}
+                        >
+                          ✅
+                        </div>
+                        <h3
+                          style={{
+                            fontSize: "20px",
+                            fontWeight: 700,
+                            fontFamily: "'Poppins', sans-serif",
+                            color: "#ffffff",
+                            marginBottom: "12px",
+                          }}
+                        >
+                          Thank You, {form.name || "there"}!
+                        </h3>
+                        <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "28px" }}>
+                          Your enquiry for the <strong style={{ color: "#FF8C00" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> has been submitted.
+                        </p>
+
+                        {enrollType === 'workshop' && (
+                          <motion.a
+                            href="https://wa.me/919211633068?text=Hi, I just enrolled for the Sunday AI Workshop. Please share the Zoom link."
+                            target="_blank"
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            style={{
+                              display: "block",
+                              width: "100%",
+                              padding: "16px",
+                              background: "#25D366",
+                              color: "white",
+                              border: "none",
+                              borderRadius: "12px",
+                              fontSize: "16px",
+                              fontWeight: 700,
+                              textDecoration: "none",
+                              marginBottom: "16px",
+                              boxShadow: "0 6px 20px rgba(37,211,102,0.3)",
+                            }}
+                          >
+                            Join Workshop WhatsApp Group
+                          </motion.a>
+                        )}
+
+                        <motion.button
+                          onClick={handleClose}
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
                           style={{
-                            display: "block",
                             width: "100%",
-                            padding: "16px",
-                            background: "#25D366",
-                            color: "white",
-                            border: "none",
+                            padding: "14px",
+                            background: "rgba(255,255,255,0.06)",
+                            color: "rgba(255,255,255,0.6)",
+                            border: "1px solid rgba(255,255,255,0.1)",
                             borderRadius: "12px",
-                            fontSize: "16px",
-                            fontWeight: 700,
-                            textDecoration: "none",
-                            marginBottom: "16px",
-                            boxShadow: "0 6px 20px rgba(37,211,102,0.3)",
+                            fontSize: "15px",
+                            fontWeight: 600,
+                            cursor: "pointer",
                           }}
                         >
-                          Join Workshop WhatsApp Group
-                        </motion.a>
-                      )}
-
-                      <motion.button
-                        onClick={handleClose}
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        style={{
-                          width: "100%",
-                          padding: "14px",
-                          background: "rgba(255,255,255,0.06)",
-                          color: "rgba(255,255,255,0.6)",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          borderRadius: "12px",
-                          fontSize: "15px",
-                          fontWeight: 600,
-                          cursor: "pointer",
-                        }}
-                      >
-                        Close
-                      </motion.button>
-                    </motion.div>
-                  ) : (
-                    <>
-                      {error && (
-                        <div style={{ padding: "12px", background: "#fef2f2", border: "1px solid #fee2e2", borderRadius: "12px", color: "#ef4444", fontSize: "13px", marginBottom: "20px", textAlign: "center" }}>
-                          {error}
-                        </div>
-                      )}
-                      <motion.form
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSubmit}
-                    >
-                      <div style={{ marginBottom: "32px" }}>
-                        <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "rgba(255,255,255,0.9)", marginBottom: "16px", textAlign: "center" }}>
-                          Select Your Program
-                        </label>
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-                          <motion.button
-                            type="button"
-                            whileHover={{ scale: 1.02, borderColor: "#4F46E5" }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => setEnrollType("course")}
-                            style={{
-                              padding: "20px 12px",
-                              borderRadius: "20px",
-                              border: `2px solid ${enrollType === 'course' ? '#FF8C00' : 'rgba(255,255,255,0.08)'}`,
-                              background: enrollType === 'course' ? 'rgba(255,140,0,0.1)' : 'rgba(255,255,255,0.04)',
-                              color: enrollType === 'course' ? '#FF8C00' : 'rgba(255,255,255,0.5)',
-                              fontWeight: 700,
-                              fontSize: "14px",
-                              cursor: "pointer",
-                              transition: "all 0.3s",
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              gap: "8px",
-                              boxShadow: enrollType === 'course' ? '0 10px 20px rgba(255,140,0,0.15)' : 'none'
-                            }}
-                          >
-                            <span style={{ fontSize: "28px" }}>🎓</span>
-                            <div style={{ lineHeight: 1.2 }}>Certification<br/><span style={{ fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>Full Program</span></div>
-                          </motion.button>
-                          <motion.button
-                            type="button"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => setEnrollType("workshop")}
-                            style={{
-                              padding: "20px 12px",
-                              borderRadius: "20px",
-                              border: `2px solid ${enrollType === 'workshop' ? '#FF8C00' : 'rgba(255,255,255,0.08)'}`,
-                              background: enrollType === 'workshop' ? 'rgba(255,140,0,0.1)' : 'rgba(255,255,255,0.04)',
-                              color: enrollType === 'workshop' ? '#FF8C00' : 'rgba(255,255,255,0.5)',
-                              fontWeight: 700,
-                              fontSize: "14px",
-                              cursor: "pointer",
-                              transition: "all 0.3s",
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              gap: "8px",
-                              boxShadow: enrollType === 'workshop' ? '0 10px 20px rgba(255,140,0,0.15)' : 'none'
-                            }}
-                          >
-                            <span style={{ fontSize: "28px" }}>⚡</span>
-                            <div style={{ lineHeight: 1.2 }}>AI Workshop<br/><span style={{ fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>3h Intense</span></div>
-                          </motion.button>
-                        </div>
-                      </div>
-                      <InputField
-                        label="Full Name"
-                        id="contact-name"
-                        placeholder="Your full name"
-                        value={form.name}
-                        onChange={handleChange("name")}
-                        required
-                      />
-                      <InputField
-                        label="Email Address"
-                        id="contact-email"
-                        type="email"
-                        placeholder="your@email.com"
-                        value={form.email}
-                        onChange={handleChange("email")}
-                        required
-                      />
-                      <InputField
-                        label="Phone Number"
-                        id="contact-phone"
-                        type="tel"
-                        placeholder="+91 98765 43210"
-                        value={form.phone}
-                        onChange={handleChange("phone")}
-                        required
-                      />
-                      <InputField
-                        label="Message"
-                        id="contact-message"
-                        placeholder="Any questions or special requirements? (Optional)"
-                        value={form.message}
-                        onChange={handleChange("message")}
-                        textarea
-                      />
-
-                      <motion.button
-                        id="contact-submit-btn"
-                        type="submit"
-                        disabled={submitting}
-                        whileHover={!submitting ? { scale: 1.02, boxShadow: "0 12px 30px rgba(79,70,229,0.4)" } : {}}
-                        whileTap={!submitting ? { scale: 0.98 } : {}}
-                        style={{
-                          width: "100%",
-                          padding: "16px",
-                          background: submitting
-                            ? "rgba(255,255,255,0.08)"
-                            : "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
-                          color: submitting ? "rgba(255,255,255,0.3)" : "white",
-                          border: "none",
-                          borderRadius: "12px",
-                          fontSize: "16px",
-                          fontWeight: 700,
-                          cursor: submitting ? "not-allowed" : "pointer",
-                          fontFamily: "'Poppins', sans-serif",
-                          boxShadow: submitting ? "none" : "0 6px 20px rgba(232,41,28,0.3)",
-                          transition: "all 0.3s ease",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "10px",
-                        }}
-                      >
-                        {submitting ? (
-                          <>
-                            <svg
-                              width="18"
-                              height="18"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              style={{ animation: "spin 1s linear infinite" }}
-                            >
-                              <path d="M21 12a9 9 0 11-6.219-8.56" strokeLinecap="round" />
-                            </svg>
-                            Submitting...
-                          </>
-                        ) : (
-                          "Submit Enquiry →"
+                          Close
+                        </motion.button>
+                      </motion.div>
+                    ) : (
+                      <>
+                        {error && (
+                          <div style={{ padding: "12px", background: "#fef2f2", border: "1px solid #fee2e2", borderRadius: "12px", color: "#ef4444", fontSize: "13px", marginBottom: "20px", textAlign: "center" }}>
+                            {error}
+                          </div>
                         )}
-                      </motion.button>
-                    </motion.form>
-                    </>
-                  )}
-                </AnimatePresence>
+                        <motion.form
+                          key="form"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          onSubmit={handleSubmit}
+                        >
+                          <div style={{ marginBottom: "32px" }}>
+                            <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "rgba(255,255,255,0.9)", marginBottom: "16px", textAlign: "center" }}>
+                              Select Your Program
+                            </label>
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                              <motion.button
+                                type="button"
+                                whileHover={{ scale: 1.02, borderColor: "#4F46E5" }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setEnrollType("course")}
+                                style={{
+                                  padding: "20px 12px",
+                                  borderRadius: "20px",
+                                  border: `2px solid ${enrollType === 'course' ? '#FF8C00' : 'rgba(255,255,255,0.08)'}`,
+                                  background: enrollType === 'course' ? 'rgba(255,140,0,0.1)' : 'rgba(255,255,255,0.04)',
+                                  color: enrollType === 'course' ? '#FF8C00' : 'rgba(255,255,255,0.5)',
+                                  fontWeight: 700,
+                                  fontSize: "14px",
+                                  cursor: "pointer",
+                                  transition: "all 0.3s",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  alignItems: "center",
+                                  gap: "8px",
+                                  boxShadow: enrollType === 'course' ? '0 10px 20px rgba(255,140,0,0.15)' : 'none'
+                                }}
+                              >
+                                <span style={{ fontSize: "28px" }}>🎓</span>
+                                <div style={{ lineHeight: 1.2 }}>Ai Generalist<br /><span style={{ fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>Full Program</span></div>
+                              </motion.button>
+                              <motion.button
+                                type="button"
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setEnrollType("workshop")}
+                                style={{
+                                  padding: "20px 12px",
+                                  borderRadius: "20px",
+                                  border: `2px solid ${enrollType === 'workshop' ? '#FF8C00' : 'rgba(255,255,255,0.08)'}`,
+                                  background: enrollType === 'workshop' ? 'rgba(255,140,0,0.1)' : 'rgba(255,255,255,0.04)',
+                                  color: enrollType === 'workshop' ? '#FF8C00' : 'rgba(255,255,255,0.5)',
+                                  fontWeight: 700,
+                                  fontSize: "14px",
+                                  cursor: "pointer",
+                                  transition: "all 0.3s",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  alignItems: "center",
+                                  gap: "8px",
+                                  boxShadow: enrollType === 'workshop' ? '0 10px 20px rgba(255,140,0,0.15)' : 'none'
+                                }}
+                              >
+                                <span style={{ fontSize: "28px" }}>⚡</span>
+                                <div style={{ lineHeight: 1.2 }}>AI Workshop<br /><span style={{ fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>3h Intense</span></div>
+                              </motion.button>
+                            </div>
+                          </div>
+                          <InputField
+                            label="Full Name"
+                            id="contact-name"
+                            placeholder="Your full name"
+                            value={form.name}
+                            onChange={handleChange("name")}
+                            required
+                          />
+                          <InputField
+                            label="Email Address"
+                            id="contact-email"
+                            type="email"
+                            placeholder="your@email.com"
+                            value={form.email}
+                            onChange={handleChange("email")}
+                            required
+                          />
+                          <InputField
+                            label="Phone Number"
+                            id="contact-phone"
+                            type="tel"
+                            placeholder="+91 98765 43210"
+                            value={form.phone}
+                            onChange={handleChange("phone")}
+                            required
+                          />
+                          <InputField
+                            label="Message"
+                            id="contact-message"
+                            placeholder="Any questions or special requirements? (Optional)"
+                            value={form.message}
+                            onChange={handleChange("message")}
+                            textarea
+                          />
+
+                          <motion.button
+                            id="contact-submit-btn"
+                            type="submit"
+                            disabled={submitting}
+                            whileHover={!submitting ? { scale: 1.02, boxShadow: "0 12px 30px rgba(79,70,229,0.4)" } : {}}
+                            whileTap={!submitting ? { scale: 0.98 } : {}}
+                            style={{
+                              width: "100%",
+                              padding: "16px",
+                              background: submitting
+                                ? "rgba(255,255,255,0.08)"
+                                : "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
+                              color: submitting ? "rgba(255,255,255,0.3)" : "white",
+                              border: "none",
+                              borderRadius: "12px",
+                              fontSize: "16px",
+                              fontWeight: 700,
+                              cursor: submitting ? "not-allowed" : "pointer",
+                              fontFamily: "'Poppins', sans-serif",
+                              boxShadow: submitting ? "none" : "0 6px 20px rgba(232,41,28,0.3)",
+                              transition: "all 0.3s ease",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              gap: "10px",
+                            }}
+                          >
+                            {submitting ? (
+                              <>
+                                <svg
+                                  width="18"
+                                  height="18"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  style={{ animation: "spin 1s linear infinite" }}
+                                >
+                                  <path d="M21 12a9 9 0 11-6.219-8.56" strokeLinecap="round" />
+                                </svg>
+                                Submitting...
+                              </>
+                            ) : (
+                              "Submit Enquiry →"
+                            )}
+                          </motion.button>
+                        </motion.form>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
 
           <style>{`
             @keyframes spin {

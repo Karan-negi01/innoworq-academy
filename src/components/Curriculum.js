@@ -92,7 +92,7 @@ function ModuleCard({ mod, index }) {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <div 
+        <div
           style={{
             fontSize: "14px",
             fontWeight: 800,
@@ -122,7 +122,7 @@ function ModuleCard({ mod, index }) {
       >
         {mod.title}
       </h3>
-      
+
       <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
         {mod.description}
       </p>
@@ -162,11 +162,11 @@ export default function Curriculum() {
         position: "relative"
       }}
     >
-      <div 
+      <div
         ref={containerRef}
-        style={{ 
-          maxWidth: "1400px", 
-          margin: "0 auto", 
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
           padding: "0 24px",
         }}
         className="curriculum-container"
@@ -204,7 +204,7 @@ export default function Curriculum() {
             you need to
             <br />
             <span style={{ color: "#ffffff", fontStyle: "italic", fontWeight: 400, fontFamily: "'Poppins', sans-serif" }}>
-              execute.
+              execute
             </span>
           </h2>
           <p

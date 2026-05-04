@@ -252,9 +252,9 @@ export default function Hero({ onEnrollClick }) {
           className="hero-stats"
         >
           {[
-             { label: "HOURS", value: 20, suffix: "+" },
-             { label: "MODULES", value: 9, suffix: "" },
-             { label: "INVESTMENT", value: 25000, suffix: "" }
+             { label: "HOURS", value: 20, prefix: "", suffix: "+" },
+             { label: "MODULES", value: 9, prefix: "", suffix: "" },
+             { label: "INVESTMENT", value: 25000, prefix: "₹", suffix: "" }
           ].map((stat, i) => (
             <div key={i} className="stat-card" style={{ textAlign: "center", minWidth: "150px" }}>
               <div className="stat-label" style={{ 
@@ -275,6 +275,7 @@ export default function Hero({ onEnrollClick }) {
                 fontSize: "56px",
                 letterSpacing: "-2px"
               }}>
+                {stat.prefix && <span style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{stat.prefix}</span>}
                 <Counter value={stat.value} animate={statsVisible} />
                 <span style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{stat.suffix}</span>
               </div>

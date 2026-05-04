@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 export default function FinalCTA({ onEnrollClick }) {
   const containerRef = useRef(null);
-  
+
   // Use framer motion scroll to slightly scale up the inner container as you scroll into the CTA
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -77,22 +77,7 @@ export default function FinalCTA({ onEnrollClick }) {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="final-cta-avatars" style={{ display: "flex", justifyContent: "center", gap: "16px", marginBottom: "40px" }}>
-              {[
-                "/gallery/ai_workflow_1_1777027613647.png",
-                "/gallery/ai_workflow_3_1777027675337.png",
-                "/gallery/ai_workflow_2_1777027652282.png"
-              ].map((src, i) => (
-                <div key={i} className="avatar-circle" style={{
-                  borderRadius: "50%",
-                  border: "2px solid rgba(255,255,255,0.2)",
-                  overflow: "hidden",
-                  boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                }}>
-                  <img src={src} alt="Workflow" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                </div>
-              ))}
-            </div>
+
 
             <h2 className="final-cta-title" style={{
               fontWeight: 800,
@@ -102,7 +87,7 @@ export default function FinalCTA({ onEnrollClick }) {
               lineHeight: 1.05,
               marginBottom: "32px"
             }}>
-              Don't get left behind.
+              Don't get left behind
             </h2>
             <p className="final-cta-subtitle" style={{
               color: "#cbd5e1",
@@ -110,13 +95,13 @@ export default function FinalCTA({ onEnrollClick }) {
               margin: "0 auto 48px",
               lineHeight: 1.6
             }}>
-              Join the next cohort of AI Generalists. Learn the skills that companies are desperately hiring for today.
+              Join the next cohort of AI Generalists. Learn the skills that companies are desperately hiring for today
             </p>
 
             <motion.button
               onClick={onEnrollClick}
-              whileHover={{ 
-                y: -4, 
+              whileHover={{
+                y: -4,
                 scale: 1.05,
                 boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
               }}
