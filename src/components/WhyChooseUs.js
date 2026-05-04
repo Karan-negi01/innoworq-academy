@@ -193,6 +193,7 @@ export default function WhyChooseUs() {
           >
             {/* Badge */}
             <div
+              className="features-badge"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -282,6 +283,7 @@ export default function WhyChooseUs() {
 
             {/* Mini stats row */}
             <div
+              className="mini-stats-row"
               style={{
                 display: "flex",
                 gap: "40px",
@@ -365,8 +367,12 @@ export default function WhyChooseUs() {
         }
 
         @media (max-width: 768px) {
-          .features-title { font-size: 40px; }
-          .features-subtitle { font-size: 15px; }
+          .features-header-grid { text-align: center !important; }
+          .features-header-grid > div { align-items: center !important; }
+          .features-title { font-size: 36px !important; text-align: center !important; }
+          .features-subtitle { font-size: 15px !important; text-align: center !important; margin: 0 auto 32px !important; }
+          .mini-stats-row { justify-content: center !important; }
+          .features-badge { margin: 0 auto 24px !important; display: flex !important; width: fit-content !important; }
           .feature-title { font-size: 17px; }
           .feature-desc { font-size: 14px; }
           .feature-row {

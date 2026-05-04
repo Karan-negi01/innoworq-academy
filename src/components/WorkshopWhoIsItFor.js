@@ -71,9 +71,10 @@ export default function WorkshopWhoIsItFor({ onEnrollClick }) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ marginBottom: "72px" }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "24px" }}>
-            <div>
+          <div className="who-header-inner" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "24px" }}>
+            <div className="who-header-text">
               <div
+                className="who-badge"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -109,6 +110,7 @@ export default function WorkshopWhoIsItFor({ onEnrollClick }) {
               </div>
 
               <h2
+                className="who-title"
                 style={{
                   fontSize: "clamp(36px, 5vw, 64px)",
                   fontWeight: 800,
@@ -227,6 +229,11 @@ export default function WorkshopWhoIsItFor({ onEnrollClick }) {
       <style>{`
         @media (max-width: 900px) {
           .who-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+          .who-header-inner { flex-direction: column !important; align-items: center !important; text-align: center !important; }
+          .who-badge { margin: 0 auto 24px !important; display: flex !important; width: fit-content !important; }
+          .who-title { font-size: 36px !important; }
         }
         @media (max-width: 600px) {
           .who-grid { grid-template-columns: 1fr !important; }

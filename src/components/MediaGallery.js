@@ -169,7 +169,7 @@ export default function MediaGallery() {
           /* On mobile, standardizing the horizontal scroll overlay */
           .media-gallery-section { height: 250vh; }
           .media-gallery-text {
-            top: 20%; /* Push text up */
+            top: 15%; /* Push text up */
             transform: translateY(0);
             left: 5%;
             right: 5%;
@@ -177,7 +177,9 @@ export default function MediaGallery() {
             z-index: 50;
             background: linear-gradient(to bottom, rgba(10,10,10,0.9) 50%, transparent 100%);
             padding-bottom: 20px;
+            text-align: center;
           }
+          .media-gallery-badge { margin: 0 auto 16px !important; display: inline-block !important; }
           .media-title-br { display: none; }
           .media-gallery-title { font-size: 40px; margin-bottom: 16px; }
           .media-gallery-desc { font-size: 15px; }

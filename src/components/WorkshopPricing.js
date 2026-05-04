@@ -57,6 +57,7 @@ export default function WorkshopPricing({ onEnrollClick, seatsLeft }) {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           style={{ textAlign: "center", marginBottom: "56px" }}
+          className="pricing-header"
         >
           <div
             style={{
@@ -95,6 +96,7 @@ export default function WorkshopPricing({ onEnrollClick, seatsLeft }) {
           </div>
 
           <h2
+            className="pricing-title"
             style={{
               fontSize: "clamp(36px, 5vw, 64px)",
               fontWeight: 800,
@@ -118,7 +120,7 @@ export default function WorkshopPricing({ onEnrollClick, seatsLeft }) {
               Everything included.
             </span>
           </h2>
-          <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.38)", fontFamily: "'Inter', sans-serif", lineHeight: 1.65 }}>
+          <p className="pricing-desc" style={{ fontSize: "17px", color: "rgba(255,255,255,0.38)", fontFamily: "'Inter', sans-serif", lineHeight: 1.65 }}>
             No upsells. No hidden costs. Just a single payment to unlock 3 hours of career-changing training.
           </p>
         </motion.div>
@@ -136,6 +138,7 @@ export default function WorkshopPricing({ onEnrollClick, seatsLeft }) {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
           }}
+          className="workshop-price-card"
         >
           {/* Left — perks */}
           <div
@@ -271,8 +274,10 @@ export default function WorkshopPricing({ onEnrollClick, seatsLeft }) {
           0%, 100% { opacity: 1; box-shadow: 0 0 8px #FF8C00; }
           50% { opacity: 0.5; box-shadow: 0 0 3px #FF8C00; }
         }
-        @media (max-width: 700px) {
+        @media (max-width: 768px) {
           .workshop-price-card { grid-template-columns: 1fr !important; }
+          .pricing-title { font-size: 36px !important; }
+          .pricing-desc { font-size: 15px !important; }
         }
       `}</style>
     </section>

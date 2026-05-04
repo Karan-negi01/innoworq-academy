@@ -153,9 +153,11 @@ export default function WorkshopTopics() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ marginBottom: "72px" }}
+          className="topics-header"
         >
           {/* Badge */}
           <div
+            className="topics-badge"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -224,6 +226,13 @@ export default function WorkshopTopics() {
           <TopicRow key={topic.number} topic={topic} index={i} />
         ))}
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .topics-header { text-align: center !important; }
+          .topics-header h2 { font-size: 36px !important; }
+          .topics-badge { margin: 0 auto 24px !important; display: flex !important; width: fit-content !important; }
+        }
+      `}</style>
     </section>
   );
 }
