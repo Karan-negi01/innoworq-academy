@@ -243,7 +243,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                 </div>
 
                 {/* Body */}
-                <div className="modal-body" style={{ padding: "36px", overflowY: "auto" }}>
+                <div className="modal-body" style={{ padding: "36px", overflowY: "auto", flex: 1 }}>
                   <AnimatePresence mode="wait">
                     {submitted ? (
                       <motion.div
