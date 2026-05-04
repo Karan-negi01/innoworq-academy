@@ -150,6 +150,16 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
             if (verifyResponse.ok) {
               setSubmitted(true);
               if (onSuccess) onSuccess();
+              
+              // Auto-redirect to WhatsApp
+              const waText = enrollType === 'workshop' 
+                ? "Hi, I just enrolled for the AI Workshop. Please share the details."
+                : "Hi, I just enrolled for the AI Generalist Certification. Please share the details.";
+              const waUrl = `https://wa.me/919211633068?text=${encodeURIComponent(waText)}`;
+              
+              setTimeout(() => {
+                window.location.href = waUrl;
+              }, 1500);
             } else {
               setError(verifyData.error || "Payment verification failed.");
             }
@@ -353,33 +363,10 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                           Thank You, {form.name || "there"}!
                         </h3>
                         <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "28px" }}>
-                          Your enquiry for the <strong style={{ color: "#FF8C00" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> has been submitted.
+                          Your enrollment for the <strong style={{ color: "#FF8C00" }}>{enrollType === 'workshop' ? 'AI Workshop' : 'Certification Program'}</strong> is confirmed. Redirecting to WhatsApp...
                         </p>
 
-                        {enrollType === 'workshop' && (
-                          <motion.a
-                            href="https://wa.me/919211633068?text=Hi, I just enrolled for the Sunday AI Workshop. Please share the Zoom link."
-                            target="_blank"
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            style={{
-                              display: "block",
-                              width: "100%",
-                              padding: "16px",
-                              background: "#25D366",
-                              color: "white",
-                              border: "none",
-                              borderRadius: "12px",
-                              fontSize: "16px",
-                              fontWeight: 700,
-                              textDecoration: "none",
-                              marginBottom: "16px",
-                              boxShadow: "0 6px 20px rgba(37,211,102,0.3)",
-                            }}
-                          >
-                            Join Workshop WhatsApp Group
-                          </motion.a>
-                        )}
+
 
                         <motion.button
                           onClick={handleClose}
