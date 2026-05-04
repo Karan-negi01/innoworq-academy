@@ -173,20 +173,26 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
               }}
             >
               <div
+                className="modal-content-wrapper"
                 style={{
                   background: "rgba(10,10,15,0.97)",
                   borderRadius: "24px",
                   boxShadow: "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,140,0,0.15)",
-                  overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.08)"
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  display: "flex",
+                  flexDirection: "column",
+                  maxHeight: "90vh",
+                  overflow: "hidden"
                 }}
               >
                 {/* Header */}
                 <div
+                  className="modal-header"
                   style={{
                     background: "linear-gradient(135deg, #FF8C00, #E8291C, #4D7FFF)",
                     padding: "32px 36px",
                     position: "relative",
+                    flexShrink: 0
                   }}
                 >
                   <button
@@ -237,7 +243,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                 </div>
 
                 {/* Body */}
-                <div style={{ padding: "36px" }}>
+                <div className="modal-body" style={{ padding: "36px", overflowY: "auto" }}>
                   <AnimatePresence mode="wait">
                     {submitted ? (
                       <motion.div
@@ -340,7 +346,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                             <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "rgba(255,255,255,0.9)", marginBottom: "16px", textAlign: "center" }}>
                               Select Your Program
                             </label>
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                            <div className="program-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                               <motion.button
                                 type="button"
                                 whileHover={{ scale: 1.02, borderColor: "#4F46E5" }}
@@ -487,6 +493,25 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
             @keyframes spin {
               from { transform: rotate(0deg); }
               to { transform: rotate(360deg); }
+            }
+            @media (max-width: 600px) {
+              .program-grid {
+                grid-template-columns: 1fr !important;
+              }
+              .modal-body {
+                padding: 24px !important;
+              }
+              .modal-header {
+                padding: 24px 20px !important;
+              }
+            }
+            @media (max-height: 700px) {
+              .modal-content-wrapper {
+                max-height: 95vh !important;
+              }
+              .modal-body {
+                padding: 20px !important;
+              }
             }
           `}</style>
         </>
