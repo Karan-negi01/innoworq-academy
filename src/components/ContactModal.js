@@ -541,7 +541,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                                 Submitting...
                               </>
                             ) : (
-                              `Pay ${enrollType === 'course' ? '₹25,000' : '₹199'} →`
+                              `Pay ${enrollType === 'course' ? '₹25,000' : '₹1'} →`
                             )}
                           </motion.button>
                         </motion.form>

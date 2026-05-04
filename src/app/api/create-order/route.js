@@ -15,7 +15,7 @@ export async function POST(request) {
     if (enrollType === 'course') {
       amount = 25000 * 100; // 25,000 INR in paise
     } else if (enrollType === 'workshop') {
-      amount = 199 * 100; // 199 INR in paise
+      amount = 1 * 100; // 1 INR in paise
     } else {
       return NextResponse.json({ error: 'Invalid enrollment type' }, { status: 400 });
     }
