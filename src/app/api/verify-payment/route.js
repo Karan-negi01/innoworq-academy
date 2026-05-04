@@ -7,11 +7,14 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 const ENROLLMENTS_FILE = path.join(DATA_DIR, 'enrollments.json');
 const SEATS_FILE = path.join(DATA_DIR, 'seats.json');
 
-// Ensure data directory and files exist
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(ENROLLMENTS_FILE)) fs.writeFileSync(ENROLLMENTS_FILE, '[]');
-if (!fs.existsSync(SEATS_FILE)) fs.writeFileSync(SEATS_FILE, JSON.stringify({ workshop: 100 }));
-
+// Ensure data directory and files exist (Handle Vercel read-only filesystem)
+try {
+  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+  if (!fs.existsSync(ENROLLMENTS_FILE)) fs.writeFileSync(ENROLLMENTS_FILE, '[]');
+  if (!fs.existsSync(SEATS_FILE)) fs.writeFileSync(SEATS_FILE, JSON.stringify({ workshop: 100 }));
+} catch (err) {
+  console.warn("Filesystem is read-only (expected on Vercel). Skipping local JSON database init.");
+}
 export async function POST(request) {
   try {
     const data = await request.json();
