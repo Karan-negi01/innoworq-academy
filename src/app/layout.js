@@ -20,6 +20,9 @@ export const metadata = {
     "Master AI tools, LLMs, prompt engineering, and automation in just 20 hours. Earn an industry-recognized AI Generalist Professional Certificate with Innoworq Academy.",
   keywords:
     "AI certification, AI tools, LLM training, prompt engineering, automation, AI courses India",
+  icons: {
+    icon: "/final.png",
+  },
   openGraph: {
     title: "Innoworq Academy | AI Generalist Professional Certification",
     description:
